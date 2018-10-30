@@ -26,6 +26,8 @@ class Signup extends Component {
     this.props.signup(this.state.username, this.state.email, this.state.password, this.state.confirmation)
   }
 
+  goToLogin = e => {console.log("Go to login page")}
+
   render(){
     const { username, email, password, confirmation } = this.state;
 
@@ -64,9 +66,13 @@ class Signup extends Component {
               </label>
               <input type="password" value={confirmation} onChange={this.handleConfirmationChange}/>
             </div>
-
+            <br/>
             <button type="submit" className="button button-block">Sign Up</button>
           </form>
+          <br/><br/><br/>
+          <div>
+            <button onClick={this.goToLogin}>Already registered? Login Here.</button>
+          </div>
 
         </div>
       </div>

@@ -5,6 +5,7 @@ import './App.css';
 import Signup from "./Components/Signup"
 import Login from "./Components/Login"
 import Header from "./Containers/Header"
+import QuizOptionPage from "./Components/QuizOptionPage"
 // import { BrowserRouter, Route, Link, NavLink, Switch, Redirect } from "react-router-dom";
 
 class App extends Component {
@@ -14,7 +15,7 @@ class App extends Component {
     this.state = {
       currentUser: null,
       signupDisplayed: true,
-      loginDisplayed: false, /*change back to false*/
+      loginDisplayed: false,
       resources: [],
       categories: []
     }
@@ -118,8 +119,14 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        { signupDisplayed ? <Signup signup={this.signup}/> : ''}
-        { loginDisplayed ? <Login login={this.login}/> : ''}
+        { signupDisplayed ?
+          <Signup signup={this.signup}/>
+          : <QuizOptionPage currentUser={currentUser}/>}
+
+        { loginDisplayed ?
+          <Login login={this.login}/>
+          : ''}
+
       </div>
     );
   }
