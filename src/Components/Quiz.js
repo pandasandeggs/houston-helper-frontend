@@ -9,40 +9,40 @@ class Quiz extends Component {
         <h1>Houston Helper Questionnaire</h1>
 
         <fieldset>
-          <label>What gender do you identify as?</label><br/>
-          <input type="radio" id="Female" value="Female" name="Female"/><label for="Female" className="light">Female</label>
-          <input type="radio" id="Male" value="Male" name="Male"/><label for="Male" className="light">Male</label>
-          <input type="radio" id="Non-Binary" value="Non-Binary" name="Non-Binary"/><label for="Non-Binary" className="light">Non-Binary</label>
-          <input type="radio" id="Genderfluid/Genderqueer" value="Genderfluid/Genderqueer" name="Genderfluid/Genderqueer"/><label for="Genderfluid/Genderqueer" className="light">Genderfluid/Genderqueer</label>
-          <input type="radio" id="Trans Woman" value="Trans Woman" name="Trans Woman"/><label for="Trans Woman" className="light">Trans Woman</label>
-          <input type="radio" id="Trans Man" value="Trans Man" name="Trans Man"/><label for="Trans Man" className="light">Trans Man</label>
-          <input type="radio" id="Agender" value="Agender" name="Agender"/><label for="Agender" className="light">Agender</label><br/>
+          <legend>What gender do you identify as?</legend><br/>
+          <input type="radio" id="Female" value="Female" name="Female"/><label htmlFor="Female" className="light">Female</label>
+          <input type="radio" id="Male" value="Male" name="Male"/><label htmlFor="Male" className="light">Male</label>
+          <input type="radio" id="Non-Binary" value="Non-Binary" name="Non-Binary"/><label htmlFor="Non-Binary" className="light">Non-Binary</label>
+          <input type="radio" id="Genderfluid/Genderqueer" value="Genderfluid/Genderqueer" name="Genderfluid/Genderqueer"/><label htmlFor="Genderfluid/Genderqueer" className="light">Genderfluid/Genderqueer</label>
+          <input type="radio" id="Trans Woman" value="Trans Woman" name="Trans Woman"/><label htmlFor="Trans Woman" className="light">Trans Woman</label>
+          <input type="radio" id="Trans Man" value="Trans Man" name="Trans Man"/><label htmlFor="Trans Man" className="light">Trans Man</label>
+          <input type="radio" id="Agender" value="Agender" name="Agender"/><label htmlFor="Agender" className="light">Agender</label><br/>
         </fieldset>
         <fieldset>
-          <label>How old are you?</label><br/>
-          <input type="radio" id="under_12" value="under_12" name="user_age"/><label for="under_12" className="light">Under 12</label>
-          <input type="radio" id="13-20" value="over_13" name="user_age"/><label for="over_13" className="light">13 - 20</label>
-          <input type="radio" id="over_13" value="over_13" name="user_age"/><label for="over_13" className="light">21 - 35</label>
-          <input type="radio" id="over_13" value="over_13" name="user_age"/><label for="over_13" className="light">36 - 64</label>
-          <input type="radio" id="over_13" value="over_13" name="user_age"/><label for="over_13" className="light">65+</label><br/>
+          <legend>How old are you?</legend><br/>
+          <input type="radio" id="under_12" value="under_12" name="user_age"/><label htmlFor="under_12" className="light">Under 12</label>
+          <input type="radio" id="13-20" value="13-20" name="user_age"/><label htmlFor="13-20" className="light">13 - 20</label>
+          <input type="radio" id="21-35" value="21-35" name="user_age"/><label htmlFor="21-35" className="light">21 - 35</label>
+          <input type="radio" id="36-64" value="36-64" name="user_age"/><label htmlFor="36-64" className="light">36 - 64</label>
+          <input type="radio" id="65+" value="65+" name="user_age"/><label htmlFor="65+" className="light">65+</label><br/>
         </fieldset>
         <fieldset>
-          <label>Do you identify as LGBTQIA?</label><br/>
-          <input type="radio" id="Yes" value="Yes" name="Yes"/><label for="Yes" className="light">Yes</label>
-          <input type="radio" id="No" value="No" name="No"/><label for="No" className="light">No</label><br/>
+          <legend>Do you identify as LGBTQIA?</legend><br/>
+          <input type="radio" id="YesLGBT" value="Yes" name="Yes"/><label htmlFor="Yes" className="light">Yes</label>
+          <input type="radio" id="NoLGBT" value="No" name="No"/><label htmlFor="No" className="light">No</label><br/>
         </fieldset>
         <fieldset>
-          <label>Are you a U.S. Veteran?</label><br/>
-          <input type="radio" id="Yes" value="Yes" name="Yes"/><label for="Yes" className="light">Yes</label>
-          <input type="radio" id="No" value="No" name="No"/><label for="No" className="light">No</label><br/>
+          <legend>Are you a U.S. Veteran?</legend><br/>
+          <input type="radio" id="YesVet" value="Yes" name="Yes"/><label htmlFor="Yes" className="light">Yes</label>
+          <input type="radio" id="NoVet" value="No" name="No"/><label htmlFor="No" className="light">No</label><br/>
         </fieldset>
         <fieldset>
-          <label>Are you homeless?</label><br/>
-          <input type="radio" id="Yes" value="Yes" name="Yes"/><label for="Yes" className="light">Yes</label>
-          <input type="radio" id="No" value="No" name="No"/><label for="No" className="light">No</label><br/>
+          <legend>Are you homeless?</legend><br/>
+          <input type="radio" id="YesHomeless" value="Yes" name="Yes"/><label htmlFor="Yes" className="light">Yes</label>
+          <input type="radio" id="NoHomeless" value="No" name="No"/><label htmlFor="No" className="light">No</label><br/>
         </fieldset>
         <fieldset>
-          <label for="income">What is the total income for your household?</label><br/>
+          <legend htmlFor="income">What is the total income for your household?</legend><br/>
           <select id="income" name="income">
             <optgroup>
               <option value="Under $24,999">Under $24,999</option>
@@ -55,34 +55,34 @@ class Quiz extends Component {
           </select><br/>
         </fieldset>
         <fieldset>
-          <label>Do you need assistance paying for your rent or utilities?</label><br/>
-          <input type="radio" id="Yes" value="Yes" name="Yes"/><label for="Yes" className="light">Yes</label>
-          <input type="radio" id="No" value="No" name="No"/><label for="No" className="light">No</label><br/>
+          <legend>Do you need assistance paying for your rent or utilities?</legend><br/>
+          <input type="radio" id="YesRent" value="Yes" name="Yes"/><label htmlFor="Yes" className="light">Yes</label>
+          <input type="radio" id="NoRent" value="No" name="No"/><label htmlFor="No" className="light">No</label><br/>
         </fieldset>
         <fieldset>
-          <label>Do you need assistance getting food for you and/or your family?</label><br/>
-          <input type="radio" id="Yes" value="Yes" name="Yes"/><label for="Yes" className="light">Yes</label>
-          <input type="radio" id="No" value="No" name="No"/><label for="No" className="light">No</label><br/>
+          <legend>Do you need assistance getting food for you and/or your family?</legend><br/>
+          <input type="radio" id="YesFood" value="Yes" name="Yes"/><label htmlFor="Yes" className="light">Yes</label>
+          <input type="radio" id="NoFood" value="No" name="No"/><label htmlFor="No" className="light">No</label><br/>
         </fieldset>
         <fieldset>
-          <label>Do you need free legal aid?</label><br/>
-          <input type="radio" id="Yes" value="Yes" name="Yes"/><label for="Yes" className="light">Yes</label>
-          <input type="radio" id="No" value="No" name="No"/><label for="No" className="light">No</label><br/>
+          <legend>Do you need free legal aid?</legend><br/>
+          <input type="radio" id="YesLaw" value="Yes" name="Yes"/><label htmlFor="Yes" className="light">Yes</label>
+          <input type="radio" id="NoLaw" value="No" name="No"/><label htmlFor="No" className="light">No</label><br/>
         </fieldset>
         <fieldset>
-          <label>Were you recently released from jail or prison?</label><br/>
-          <input type="radio" id="Yes" value="Yes" name="Yes"/><label for="Yes" className="light">Yes</label>
-          <input type="radio" id="No" value="No" name="No"/><label for="No" className="light">No</label><br/>
+          <legend>Were you recently released from jail or prison?</legend><br/>
+          <input type="radio" id="YesJail" value="Yes" name="Yes"/><label htmlFor="Yes" className="light">Yes</label>
+          <input type="radio" id="NoJail" value="No" name="No"/><label htmlFor="No" className="light">No</label><br/>
         </fieldset>
         <fieldset>
-          <label>Do you need help overcoming or recovering from drug/alcohol abuse?</label><br/>
-          <input type="radio" id="Yes" value="Yes" name="Yes"/><label for="Yes" className="light">Yes</label>
-          <input type="radio" id="No" value="No" name="No"/><label for="No" className="light">No</label><br/>
+          <legend>Do you need help overcoming or recovering from drug/alcohol abuse?</legend><br/>
+          <input type="radio" id="YesDrug" value="Yes" name="Yes"/><label htmlFor="Yes" className="light">Yes</label>
+          <input type="radio" id="NoDrug" value="No" name="No"/><label htmlFor="No" className="light">No</label><br/>
         </fieldset>
         <fieldset>
-          <label>Do you need help finding affordable mental health and/or general heathcare services?</label><br/>
-          <input type="radio" id="Yes" value="Yes" name="Yes"/><label for="Yes" className="light">Yes</label>
-          <input type="radio" id="No" value="No" name="No"/><label for="No" className="light">No</label><br/>
+          <legend>Do you need help finding affordable mental health and/or general heathcare services?</legend><br/>
+          <input type="radio" id="YesHealth" value="Yes" name="Yes"/><label htmlFor="Yes" className="light">Yes</label>
+          <input type="radio" id="NoHealth" value="No" name="No"/><label htmlFor="No" className="light">No</label><br/>
         </fieldset>
 
         <button type="submit">Finished</button>

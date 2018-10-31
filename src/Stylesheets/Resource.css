@@ -1,0 +1,14 @@
+.resource-list {
+  border-style: solid;
+  border-color: green;
+  padding: 10%;
+  display: inline-block;
+  float: left;
+}
+.resource-display {
+  border-style: solid;
+  border-color: purple;
+  padding: 10%;
+  display: inline-block;
+  float: right;
+}

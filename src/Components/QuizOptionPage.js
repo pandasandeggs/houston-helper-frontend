@@ -21,7 +21,9 @@ class QuizOptionPage extends Component {
         <button onClick={this.handleQuizClick}>Yes, I will answer a few questions!</button>
         <br/>
         <button onClick={this.handleResourceClick}>No thanks. Take me directly to the resources.</button>
-        {this.state.takeQuiz ? <Quiz categories={this.props.categories} getUserCategories={this.props.getUserCategories}/> : <ResourceMainContainer />}
+        {this.state.takeQuiz ?
+          <Quiz categories={this.props.categories} getUserCategories={this.props.getUserCategories} resources={this.props.resources}/>
+          : <ResourceMainContainer currentUser={this.props.currentUser} resources={this.props.resources} categories={this.props.categories}/>}
 
       </div>
     )

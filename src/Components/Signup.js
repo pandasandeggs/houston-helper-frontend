@@ -26,7 +26,6 @@ class Signup extends Component {
     this.props.signup(this.state.username, this.state.email, this.state.password, this.state.confirmation)
   }
 
-  goToLogin = e => {console.log("Go to login page")}
 
   render(){
     const { username, email, password, confirmation } = this.state;
@@ -71,7 +70,7 @@ class Signup extends Component {
           </form>
           <br/><br/><br/>
           <div>
-            <button onClick={this.goToLogin}>Already registered? Login Here.</button>
+            <button onClick={ () => this.props.getLogin() }>Already registered? Login Here.</button>
           </div>
 
         </div>

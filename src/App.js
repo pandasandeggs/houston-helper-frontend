@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import logo from './logo.svg';
 import './App.css';
 import Signup from "./Components/Signup"
 import Login from "./Components/Login"
 import Header from "./Containers/Header"
 import QuizOptionPage from "./Components/QuizOptionPage"
+import ResourceMainContainer from "./Containers/ResourceMainContainer"
+
+
 // import { BrowserRouter, Route, Link, NavLink, Switch, Redirect } from "react-router-dom";
 
 class App extends Component {
@@ -17,6 +19,7 @@ class App extends Component {
       signupDisplayed: true,
       loginDisplayed: false,
       resourceMainDisplayed: false,
+      questionPageDisplayed: false,
       resources: [],
       categories: []
     }
@@ -71,7 +74,8 @@ class App extends Component {
           localStorage.token = data.token;
           this.setState({
             currentUser: data.user,
-            signupDisplayed: false
+            signupDisplayed: false,
+            questionPageDisplayed: true
           })
         } else {
           console.log("User was not successfully created.")
@@ -115,6 +119,14 @@ class App extends Component {
       })
   }
 
+  getLogin = () => {
+    this.setState({
+      signupDisplayed: false,
+      loginDisplayed: true,
+      questionPageDisplayed: false
+    })
+  }
+
   getUserCategories = category => {
     this.setState({
       categories:[...this.state.categories, category]
@@ -125,26 +137,20 @@ class App extends Component {
     /* somehow connect the users categories to the resource categories and then render the associated resources */
   }
 
-  showResources = resources => {
-    if ({/*filterUserResources.length*/}){
-      /* set state for resourceMainDisplayed to true and give me the resources pertaining to that user */
-    } else {
-      /* set state for resourceMainDisplayed to true and give me all the resources */
-    }
-  }
-
   render() {
-    const { currentUser, signupDisplayed, loginDisplayed, resources, categories } = this.state;
+    const { currentUser, signupDisplayed, loginDisplayed, questionPageDisplayed, resources, categories } = this.state;
     return (
       <div className="App">
         <Header />
         { signupDisplayed ?
-          <Signup signup={this.signup}/>
-          : <QuizOptionPage currentUser={currentUser} categories={categories} getUserCategories={this.getUserCategories}/>}
-
+          <Signup signup={this.signup} getLogin={this.getLogin}/>
+          : null}
+        { questionPageDisplayed ?
+        <QuizOptionPage currentUser={currentUser} resources={resources} categories={categories} getUserCategories={this.getUserCategories} getLogin={this.getLogin}/>
+          : null }
         { loginDisplayed ?
           <Login login={this.login}/>
-          : ''}
+          : <ResourceMainContainer currentUser={currentUser} resources={resources} categories={categories}/>}
 
       </div>
     );
