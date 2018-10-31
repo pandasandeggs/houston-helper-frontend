@@ -8,6 +8,7 @@ class Header extends Component {
           <h1>
             Houston Helper
           </h1>
+          <button id="">Logout</button>
       </div>
     );
   }

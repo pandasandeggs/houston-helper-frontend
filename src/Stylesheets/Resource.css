@@ -1,14 +1,30 @@
+.resource-main-container{
+  margin: 1em;
+}
+
 .resource-list {
   border-style: solid;
   border-color: green;
-  padding: 10%;
+  padding: 1em;
+  width: 30%;
+  height: 100%;
   display: inline-block;
   float: left;
 }
 .resource-display {
   border-style: solid;
   border-color: purple;
-  padding: 10%;
+  padding: 1em;
+  width: 60%;
+  height: 100%;
+  position: relative;
   display: inline-block;
   float: right;
+}
+
+.resource-card {
+  border-style: solid;
+  border-color: orange;
+  padding: 1em;
+  overflow-x: hidden;
 }

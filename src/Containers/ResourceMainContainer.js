@@ -5,15 +5,36 @@ import ResourceDisplay from './ResourceDisplay'
 
 class ResourceMainContainer extends Component {
 
+  state ={
+    chosenResource: null
+  }
+
+  handleResourceClick = resource => {
+    this.setState({
+      chosenResource: resource
+    })
+  }
+
   render(){
-    console.log("resources in main", this.props.resources)
     return(
-      <div>
+      <div className="resource-main-container">
         <div className="resource-list">
-          <ResourceList resources={this.props.resources}/>
+          <h1>Resources</h1>
+          <ResourceList resources={this.props.resources} handleResourceClick={this.handleResourceClick}/>
         </div>
         <div className="resource-display">
-          <ResourceDisplay />
+          { this.state.chosenResource ?
+            <ResourceDisplay
+            handleResourceClick={this.handleResourceClick}
+            id={this.state.chosenResource.id}
+            name={this.state.chosenResource.name}
+            image={this.state.chosenResource.image}
+            description={this.state.chosenResource.description}
+            phone={this.state.chosenResource.phone}
+            email={this.state.chosenResource.email}
+            website={this.state.chosenResource.website}
+            />
+            : null}
         </div>
       </div>
     )

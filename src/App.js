@@ -113,7 +113,11 @@ class App extends Component {
             'Authorization': `Bearer ${token}`
           }
         }).then(resp => resp.json())
-          .then(data => {this.setState({resources: data})
+          .then(data => {
+            this.setState({
+            resources: data,
+            resourceMainDisplayed: true
+          })
         })
       })
   }
@@ -122,7 +126,8 @@ class App extends Component {
     this.setState({
       signupDisplayed: false,
       loginDisplayed: true,
-      questionPageDisplayed: false
+      questionPageDisplayed: false,
+      resourceMainDisplayed: false
     })
   }
 
@@ -136,20 +141,20 @@ class App extends Component {
     /* somehow connect the users categories to the resource categories and then render the associated resources */
   }
 
+
   render() {
-    const { currentUser, signupDisplayed, loginDisplayed, questionPageDisplayed, resources, categories } = this.state;
+    const { currentUser, signupDisplayed, loginDisplayed, resourceMainDisplayed, questionPageDisplayed, showQuestionPrompt, resources, categories } = this.state;
     return (
       <div className="App">
         <Header />
-        { signupDisplayed ?
-          <Signup signup={this.signup} getLogin={this.getLogin}/>
-          : null}
+        { signupDisplayed ? <Signup signup={this.signup} getLogin={this.getLogin}/> : null}
         { questionPageDisplayed ?
-        <QuizOptionPage currentUser={currentUser} resources={resources} categories={categories} getUserCategories={this.getUserCategories} getLogin={this.getLogin}/>
+        <QuizOptionPage currentUser={currentUser} resources={resources} categories={categories} getUserCategories={this.getUserCategories} getLogin={this.getLogin} />
           : null }
+        { resourceMainDisplayed ? <ResourceMainContainer currentUser={currentUser} resources={resources} categories={categories}/> : null}
         { loginDisplayed ?
           <Login login={this.login}/>
-          : <ResourceMainContainer currentUser={currentUser} resources={resources} categories={categories}/>}
+          : null }
 
       </div>
     );

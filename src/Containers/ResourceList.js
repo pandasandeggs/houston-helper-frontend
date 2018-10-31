@@ -5,8 +5,8 @@ class ResourceList extends Component {
 
   getResources(){
     return this.props.resources.map( resource =>
-      <div>
-        <ResourceCards name={resource.name} />
+      <div onClick={ e => this.props.handleResourceClick(resource)}>
+        <ResourceCards id={resource.id} name={resource.name} />
       </div>
     )
   }
