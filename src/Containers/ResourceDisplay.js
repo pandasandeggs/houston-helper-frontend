@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ResourceCards extends Component {
+class ResourceDisplay extends Component {
 
   render(){
     return(
@@ -10,4 +10,4 @@ class ResourceCards extends Component {
 
 }
 
-export default ResourceCards;
+export default ResourceDisplay;

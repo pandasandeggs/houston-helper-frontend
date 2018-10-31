@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 
 class Quiz extends Component {
 
-  state = {
-    categories: []
-  }
-
   render(){
     return(
       <form>

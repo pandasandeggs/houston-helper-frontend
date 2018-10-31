@@ -16,6 +16,7 @@ class App extends Component {
       currentUser: null,
       signupDisplayed: true,
       loginDisplayed: false,
+      resourceMainDisplayed: false,
       resources: [],
       categories: []
     }
@@ -114,6 +115,24 @@ class App extends Component {
       })
   }
 
+  getUserCategories = category => {
+    this.setState({
+      categories:[...this.state.categories, category]
+    })
+  }
+
+  filterUserResources = resources => {
+    /* somehow connect the users categories to the resource categories and then render the associated resources */
+  }
+
+  showResources = resources => {
+    if ({/*filterUserResources.length*/}){
+      /* set state for resourceMainDisplayed to true and give me the resources pertaining to that user */
+    } else {
+      /* set state for resourceMainDisplayed to true and give me all the resources */
+    }
+  }
+
   render() {
     const { currentUser, signupDisplayed, loginDisplayed, resources, categories } = this.state;
     return (
@@ -121,7 +140,7 @@ class App extends Component {
         <Header />
         { signupDisplayed ?
           <Signup signup={this.signup}/>
-          : <QuizOptionPage currentUser={currentUser}/>}
+          : <QuizOptionPage currentUser={currentUser} categories={categories} getUserCategories={this.getUserCategories}/>}
 
         { loginDisplayed ?
           <Login login={this.login}/>
