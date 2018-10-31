@@ -6,7 +6,7 @@ class ResourceList extends Component {
   getResources(){
     return this.props.resources.map( resource =>
       <div>
-        <ResourceCards name={resource.name} category={resource.category}/>
+        <ResourceCards name={resource.name} />
       </div>
     )
   }

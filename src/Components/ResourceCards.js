@@ -5,8 +5,8 @@ class ResourceCards extends Component {
   render(){
     return(
       <div>
-        <h2>{this.props.resource.name}</h2>
-        <p>Type: {this.props.resource.category}</p>
+        <h2>{this.props.name}</h2>
+        <p>Type: </p>
       </div>
     )
   }

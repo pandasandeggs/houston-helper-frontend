@@ -7,7 +7,6 @@ import Header from "./Containers/Header"
 import QuizOptionPage from "./Components/QuizOptionPage"
 import ResourceMainContainer from "./Containers/ResourceMainContainer"
 
-
 // import { BrowserRouter, Route, Link, NavLink, Switch, Redirect } from "react-router-dom";
 
 class App extends Component {

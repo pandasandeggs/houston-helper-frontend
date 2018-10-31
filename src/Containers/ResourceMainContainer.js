@@ -6,6 +6,7 @@ import ResourceDisplay from './ResourceDisplay'
 class ResourceMainContainer extends Component {
 
   render(){
+    console.log("resources in main", this.props.resources)
     return(
       <div>
         <div className="resource-list">
