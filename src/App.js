@@ -117,9 +117,16 @@ class App extends Component {
             this.setState({
             resources: data,
             resourceMainDisplayed: true
-          })
+          }, console.log(data))
         })
       })
+  }
+
+  logout = () => {
+    this.setState({
+      signupDisplayed: true,
+      resourceMainDisplayed: false
+    })
   }
 
   getLogin = () => {
@@ -138,20 +145,43 @@ class App extends Component {
   }
 
   filterUserResources = resources => {
+    console.log("Need to connect and filter resources")
     /* somehow connect the users categories to the resource categories and then render the associated resources */
   }
 
+  saveUserResource = resource => {
+    if(!this.state.currentUser.resources.find( saved => saved.id === resource.id)){
+      this.setState({
+        currentUser: {...this.state.currentUser,
+          resources: [...this.state.currentUser.resources, resource]
+        }
+      })
+      console.log(this.state.currentUser.resources)
+      return fetch(`http://localhost:3000/users/${this.state.currentUser.id}/resources/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          user_id: this.state.currentUser.id,
+          resource_id: resource.id
+        })
+      }).then(console.log)
+    } else {
+      alert("This resource is already saved.")
+    }
+  }
 
   render() {
     const { currentUser, signupDisplayed, loginDisplayed, resourceMainDisplayed, questionPageDisplayed, showQuestionPrompt, resources, categories } = this.state;
     return (
       <div className="App">
-        <Header />
+        <Header currentUser={currentUser} logout={this.logout}/>
         { signupDisplayed ? <Signup signup={this.signup} getLogin={this.getLogin}/> : null}
         { questionPageDisplayed ?
         <QuizOptionPage currentUser={currentUser} resources={resources} categories={categories} getUserCategories={this.getUserCategories} getLogin={this.getLogin} />
           : null }
-        { resourceMainDisplayed ? <ResourceMainContainer currentUser={currentUser} resources={resources} categories={categories}/> : null}
+        { resourceMainDisplayed ? <ResourceMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserResource={this.saveUserResource}/> : null}
         { loginDisplayed ?
           <Login login={this.login}/>
           : null }

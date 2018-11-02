@@ -7,7 +7,7 @@ class ResourceMainContainer extends Component {
 
   state ={
     chosenResource: null
-  }
+    }
 
   handleResourceClick = resource => {
     this.setState({
@@ -20,7 +20,7 @@ class ResourceMainContainer extends Component {
       <div className="resource-main-container">
         <div className="resource-list">
           <h1>Resources</h1>
-          <ResourceList resources={this.props.resources} handleResourceClick={this.handleResourceClick}/>
+          <ResourceList currentUser={this.props.currentUser} resources={this.props.resources} handleResourceClick={this.handleResourceClick}/>
         </div>
         <div className="resource-display">
           { this.state.chosenResource ?
@@ -33,6 +33,9 @@ class ResourceMainContainer extends Component {
             phone={this.state.chosenResource.phone}
             email={this.state.chosenResource.email}
             website={this.state.chosenResource.website}
+            currentUser={this.props.currentUser}
+            saveUserResource={this.props.saveUserResource}
+            saveButtonText={ this.props.currentUser.resources.find( resource => resource.id == this.state.chosenResource.id ) ? 'Saved' : 'Save Resource'}
             />
             : null}
         </div>
