@@ -7,7 +7,7 @@ class ResourceDisplay extends Component {
       <div>
         <div>
           <h1>{this.props.name}</h1>
-          <img src={this.props.image} alt="" height="100" width="300"/>
+          <img src={this.props.image} alt={this.props.name} height="100" width="300"/>
           <p>{this.props.description}</p>
           <br/>
           <p>Phone: {this.props.phone}</p>

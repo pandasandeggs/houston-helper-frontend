@@ -150,17 +150,18 @@ class App extends Component {
   }
 
   saveUserResource = resource => {
+    const token = localStorage.token;
     if(!this.state.currentUser.resources.find( saved => saved.id === resource.id)){
       this.setState({
         currentUser: {...this.state.currentUser,
           resources: [...this.state.currentUser.resources, resource]
         }
       })
-      console.log(this.state.currentUser.resources)
-      return fetch(`http://localhost:3000/users/${this.state.currentUser.id}/resources/`, {
+      return fetch(`http://localhost:3000/user_resources`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
           user_id: this.state.currentUser.id,
