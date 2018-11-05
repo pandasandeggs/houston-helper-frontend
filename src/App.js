@@ -6,6 +6,7 @@ import Login from "./Components/Login"
 import Header from "./Containers/Header"
 import QuizOptionPage from "./Components/QuizOptionPage"
 import ResourceMainContainer from "./Containers/ResourceMainContainer"
+import ProfileMainContainer from "./Containers/ProfileMainContainer"
 
 // import { BrowserRouter, Route, Link, NavLink, Switch, Redirect } from "react-router-dom";
 
@@ -19,6 +20,7 @@ class App extends Component {
       loginDisplayed: false,
       resourceMainDisplayed: false,
       questionPageDisplayed: false,
+      profilePageDisplayed: false,
       resources: [],
       categories: []
     }
@@ -58,7 +60,7 @@ class App extends Component {
             }
           }).then(resp => resp.json())
             .then(data => {
-              this.setState({categories: data}, console.log(data))
+              this.setState({categories: data})
           })
         })
     }
@@ -162,6 +164,20 @@ class App extends Component {
     })
   }
 
+  getProfile = () => {
+    this.setState({
+      resourceMainDisplayed: false,
+      profilePageDisplayed: true
+    })
+  }
+
+  getHome = () => {
+    this.setState({
+      resourceMainDisplayed: true,
+      profilePageDisplayed: false
+    })
+  }
+
   getUserCategories = category => {
     this.setState({
       categories:[...this.state.categories, category]
@@ -199,7 +215,7 @@ class App extends Component {
 
   saveUserCategory = state => {
     console.log("Female category object", this.state.categories)
-    const token = localStorage.token;
+    debugger
     /* When the form is submitted, hit a switch statement and don't break. Set State for each categories to be a copy of the current categories plus the category it equals. */
     switch (this.state){
       case 'gender':
@@ -239,10 +255,10 @@ class App extends Component {
   }
 
   render() {
-    const { currentUser, signupDisplayed, loginDisplayed, resourceMainDisplayed, questionPageDisplayed, showQuestionPrompt, resources, categories } = this.state;
+    const { currentUser, signupDisplayed, loginDisplayed, resourceMainDisplayed, questionPageDisplayed, profilePageDisplayed, showQuestionPrompt, resources, categories } = this.state;
     return (
       <div className="App">
-        <Header currentUser={currentUser} logout={this.logout}/>
+        <Header currentUser={currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome}/>
         { signupDisplayed ? <Signup signup={this.signup} getLogin={this.getLogin}/> : null}
         { questionPageDisplayed ?
         <QuizOptionPage currentUser={currentUser} resources={resources} categories={categories} getUserCategories={this.getUserCategories} getLogin={this.getLogin} saveUserCategory={this.saveUserCategory}/>
@@ -251,7 +267,7 @@ class App extends Component {
         { loginDisplayed ?
           <Login login={this.login}/>
           : null }
-
+        { profilePageDisplayed ? <ProfileMainContainer currentUser={currentUser} resources={resources} categories={categories} /> : null}
       </div>
     );
   }

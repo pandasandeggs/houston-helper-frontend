@@ -1,0 +1,38 @@
+.profile-main-container{
+  margin: 1em;
+}
+
+.profile-display {
+  border-style: solid;
+  border-color: green;
+  padding: 1em;
+  width: 40%;
+  height: 100%;
+  display: inline-block;
+  float: left;
+}
+.profile-list {
+  border-style: solid;
+  border-color: purple;
+  padding: 1em;
+  width: 50%;
+  height: 100%;
+  position: relative;
+  display: inline-block;
+  float: right;
+}
+
+.profile-card {
+  border-style: solid;
+  border-color: orange;
+  padding: 1em;
+  overflow-x: hidden;
+}
+
+.document-show-button {
+  display: inline-block;
+}
+
+.document-delete-button {
+  display: inline-block;
+}

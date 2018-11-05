@@ -15,12 +15,16 @@ class Header extends Component {
     }).then(this.props.logout())
   }
 
+
+
   render() {
     return (
       <div className="App" className="App-header">
           <h1>
             Houston Helper
           </h1>
+          <button className="home-button" onClick={ () => this.props.getHome()}>Home</button>
+          <button className="profile-button" onClick={ () => this.props.getProfile()}>My Profile</button>
           <button className="logout-button" onClick={ () => this.logout()}>Logout</button>
       </div>
     );
