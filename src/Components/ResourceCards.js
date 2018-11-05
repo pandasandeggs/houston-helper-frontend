@@ -12,11 +12,19 @@ class ResourceCards extends Component {
     website: this.props.website
   }
 
+  getCategories(){
+    if(this.props.categories.length){
+      return this.props.categories.map( category => <p>{category.name}</p> )
+    } else {
+      return "None"
+    }
+  }
+
   render(){
     return(
       <div className="resource-card">
         <h2>{this.props.name}</h2>
-        <p>Type: </p>
+        <p>Related to:</p> {this.getCategories()}
       </div>
     )
   }

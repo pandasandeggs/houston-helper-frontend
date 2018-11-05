@@ -7,7 +7,7 @@ class ResourceList extends Component {
     if(this.props.resources.length){
       return this.props.resources.map( resource =>
         <div key={resource.id} onClick={ e => this.props.handleResourceClick(resource)}>
-          <ResourceCards id={resource.id} name={resource.name} />
+          <ResourceCards id={resource.id} name={resource.name} categories={resource.categories}/>
         </div>
       )
     } else {

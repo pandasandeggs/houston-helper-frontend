@@ -50,6 +50,16 @@ class App extends Component {
           }).then(resp => resp.json())
             .then(data => {this.setState({resources: data})
           })
+        }).then ( () => {
+          const token = localStorage.token
+          fetch('http://localhost:3000/categories', {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          }).then(resp => resp.json())
+            .then(data => {
+              this.setState({categories: data}, console.log(data))
+          })
         })
     }
   }
@@ -74,7 +84,8 @@ class App extends Component {
           this.setState({
             currentUser: data.user,
             signupDisplayed: false,
-            questionPageDisplayed: true
+            questionPageDisplayed: true,
+            resourceMainDisplayed: false
           })
         } else {
           console.log("User was not successfully created.")
@@ -116,6 +127,19 @@ class App extends Component {
           .then(data => {
             this.setState({
             resources: data,
+            resourceMainDisplayed: true
+          })
+        })
+      }).then ( () => {
+        const token = localStorage.token
+        fetch('http://localhost:3000/categories', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        }).then(resp => resp.json())
+          .then(data => {
+            this.setState({
+            categories: data,
             resourceMainDisplayed: true
           }, console.log(data))
         })
@@ -173,6 +197,47 @@ class App extends Component {
     }
   }
 
+  saveUserCategory = state => {
+    console.log("Female category object", this.state.categories)
+    const token = localStorage.token;
+    /* When the form is submitted, hit a switch statement and don't break. Set State for each categories to be a copy of the current categories plus the category it equals. */
+    switch (this.state){
+      case 'gender':
+        if(this.state.gender === "Female"){
+          this.setState({categories: [ ...this.state.categories, state]})
+        } else if (this.state.gender === "Male"){
+          this.setState({categories: [ ...this.state.categories]})
+        } else {
+          this.setState({categories: [ ...this.state.categories, state]})
+        }
+      case 'age':
+        this.setState({categories: [ ...this.state.categories, state]})
+      case 'lgbt':
+        this.setState({categories: [ ...this.state.categories, state]})
+      case 'veteran':
+        this.setState({categories: [ ...this.state.categories, state]})
+      case 'homeless':
+        this.setState({categories: [ ...this.state.categories, state]})
+      case 'income':
+        this.setState({categories: [ ...this.state.categories, state]})
+      case 'rent':
+        this.setState({categories: [ ...this.state.categories, state]})
+      case 'food':
+        this.setState({categories: [ ...this.state.categories, state]})
+      case 'law':
+        this.setState({categories: [ ...this.state.categories, state]})
+      case 'jail':
+        this.setState({categories: [ ...this.state.categories, state]})
+      case 'drug':
+        this.setState({categories: [ ...this.state.categories, state]})
+      case 'health':
+        this.setState({categories: [ ...this.state.categories, state]})
+      default:
+        console.log("No categories selected")
+    }
+
+  }
+
   render() {
     const { currentUser, signupDisplayed, loginDisplayed, resourceMainDisplayed, questionPageDisplayed, showQuestionPrompt, resources, categories } = this.state;
     return (
@@ -180,7 +245,7 @@ class App extends Component {
         <Header currentUser={currentUser} logout={this.logout}/>
         { signupDisplayed ? <Signup signup={this.signup} getLogin={this.getLogin}/> : null}
         { questionPageDisplayed ?
-        <QuizOptionPage currentUser={currentUser} resources={resources} categories={categories} getUserCategories={this.getUserCategories} getLogin={this.getLogin} />
+        <QuizOptionPage currentUser={currentUser} resources={resources} categories={categories} getUserCategories={this.getUserCategories} getLogin={this.getLogin} saveUserCategory={this.saveUserCategory}/>
           : null }
         { resourceMainDisplayed ? <ResourceMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserResource={this.saveUserResource}/> : null}
         { loginDisplayed ?
