@@ -22,7 +22,9 @@ class App extends Component {
       questionPageDisplayed: false,
       profilePageDisplayed: false,
       resources: [],
-      categories: []
+      categories: [],
+      questions: [],
+      answers:[]
     }
   }
 
@@ -82,7 +84,7 @@ class App extends Component {
     }).then(resp => resp.json())
       .then(data => {
         if(!data.error){
-          localStorage.token = data.token;
+          localStorage.setItem('token', data.jwt);
           this.setState({
             currentUser: data.user,
             signupDisplayed: false,
@@ -92,7 +94,8 @@ class App extends Component {
         } else {
           console.log("User was not successfully created.")
         }
-      })
+      }).then(() => this.getQuestions(localStorage.token))
+        .then(() => this.getAnswers(localStorage.token))
   }
 
   login = (username, password) => {
@@ -109,7 +112,7 @@ class App extends Component {
     }).then(resp => resp.json())
       .then(data => {
         if(!data.error){
-          localStorage.token = data.jwt;
+          localStorage.setItem('token', data.jwt);
           this.setState({
             currentUser: data.user,
             loginDisplayed: false
@@ -145,7 +148,32 @@ class App extends Component {
             resourceMainDisplayed: true
           }, console.log(data))
         })
+      }).then(() => this.getQuestions(localStorage.token))
+        .then(() => this.getAnswers(localStorage.token))
+  }
+
+  getQuestions = token => {
+      fetch('http://localhost:3000/questions/index', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      }).then(resp => resp.json())
+        .then(data => {
+          this.setState({questions: data}, console.log("questions", data))
       })
+  }
+
+  getAnswers = token => {
+    fetch('http://localhost:3000/answers/index', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    }).then(resp => resp.json())
+      .then(data => {
+        this.setState({answers: data}, console.log("answers", data))
+    })
   }
 
   logout = () => {
@@ -217,51 +245,18 @@ class App extends Component {
     console.log("Female category object", this.state.categories)
     debugger
     /* When the form is submitted, hit a switch statement and don't break. Set State for each categories to be a copy of the current categories plus the category it equals. */
-    switch (this.state){
-      case 'gender':
-        if(this.state.gender === "Female"){
-          this.setState({categories: [ ...this.state.categories, state]})
-        } else if (this.state.gender === "Male"){
-          this.setState({categories: [ ...this.state.categories]})
-        } else {
-          this.setState({categories: [ ...this.state.categories, state]})
-        }
-      case 'age':
-        this.setState({categories: [ ...this.state.categories, state]})
-      case 'lgbt':
-        this.setState({categories: [ ...this.state.categories, state]})
-      case 'veteran':
-        this.setState({categories: [ ...this.state.categories, state]})
-      case 'homeless':
-        this.setState({categories: [ ...this.state.categories, state]})
-      case 'income':
-        this.setState({categories: [ ...this.state.categories, state]})
-      case 'rent':
-        this.setState({categories: [ ...this.state.categories, state]})
-      case 'food':
-        this.setState({categories: [ ...this.state.categories, state]})
-      case 'law':
-        this.setState({categories: [ ...this.state.categories, state]})
-      case 'jail':
-        this.setState({categories: [ ...this.state.categories, state]})
-      case 'drug':
-        this.setState({categories: [ ...this.state.categories, state]})
-      case 'health':
-        this.setState({categories: [ ...this.state.categories, state]})
-      default:
-        console.log("No categories selected")
-    }
+
 
   }
 
   render() {
-    const { currentUser, signupDisplayed, loginDisplayed, resourceMainDisplayed, questionPageDisplayed, profilePageDisplayed, showQuestionPrompt, resources, categories } = this.state;
+    const { currentUser, signupDisplayed, loginDisplayed, resourceMainDisplayed, questionPageDisplayed, profilePageDisplayed, showQuestionPrompt, resources, categories, questions, answers } = this.state;
     return (
       <div className="App">
         <Header currentUser={currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome}/>
         { signupDisplayed ? <Signup signup={this.signup} getLogin={this.getLogin}/> : null}
         { questionPageDisplayed ?
-        <QuizOptionPage currentUser={currentUser} resources={resources} categories={categories} getUserCategories={this.getUserCategories} getLogin={this.getLogin} saveUserCategory={this.saveUserCategory}/>
+        <QuizOptionPage currentUser={currentUser} resources={resources} categories={categories} getUserCategories={this.getUserCategories} getLogin={this.getLogin} saveUserCategory={this.saveUserCategory} questions={questions} answers={answers}/>
           : null }
         { resourceMainDisplayed ? <ResourceMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserResource={this.saveUserResource}/> : null}
         { loginDisplayed ?

@@ -27,7 +27,8 @@ class ProfileMainContainer extends Component {
         </div>
         <div className="profile-list">
           <h1>My Resources</h1>
-          <ProfileResourceList currentUser={this.props.currentUser} categories={this.props.categories} /*handleResourceClick={this.handleResourceClick}*//>
+          <ProfileResourceList currentUser={this.props.currentUser} categories={this.props.categories}
+          resources={this.props.resources} /*handleResourceClick={this.handleResourceClick}*//>
         </div>
       </div>
     )

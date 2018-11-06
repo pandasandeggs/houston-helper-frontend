@@ -31,6 +31,7 @@
 
 .document-show-button {
   display: inline-block;
+  margin-right: 1em;
 }
 
 .document-delete-button {

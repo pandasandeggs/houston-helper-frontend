@@ -22,7 +22,7 @@ class ResourceCards extends Component {
 
   render(){
     return(
-      <div className="resource-card">
+      <div className="resource-card" key={this.props.id}>
         <h2>{this.props.name}</h2>
         <p>Related to:</p> {this.getCategories()}
       </div>
