@@ -21,6 +21,7 @@ class App extends Component {
       resourceMainDisplayed: false,
       questionPageDisplayed: false,
       profilePageDisplayed: false,
+      quizDisplayed: false,
       resources: [],
       categories: [],
       questions: [],
@@ -179,7 +180,9 @@ class App extends Component {
   logout = () => {
     this.setState({
       signupDisplayed: true,
-      resourceMainDisplayed: false
+      resourceMainDisplayed: false,
+      profilePageDisplayed: false,
+      questionPageDisplayed: false
     })
   }
 
@@ -188,27 +191,25 @@ class App extends Component {
       signupDisplayed: false,
       loginDisplayed: true,
       questionPageDisplayed: false,
-      resourceMainDisplayed: false
+      resourceMainDisplayed: false,
+      profilePageDisplayed: false
     })
   }
 
   getProfile = () => {
     this.setState({
       resourceMainDisplayed: false,
-      profilePageDisplayed: true
+      profilePageDisplayed: true,
+      questionPageDisplayed: false
     })
   }
 
   getHome = () => {
     this.setState({
       resourceMainDisplayed: true,
-      profilePageDisplayed: false
-    })
-  }
-
-  getUserCategories = category => {
-    this.setState({
-      categories:[...this.state.categories, category]
+      profilePageDisplayed: false,
+      questionPageDisplayed: false,
+      quizDisplayed: false
     })
   }
 
@@ -235,34 +236,56 @@ class App extends Component {
           user_id: this.state.currentUser.id,
           resource_id: resource.id
         })
-      }).then(console.log)
+      }).then(resp => resp.json())
     } else {
       alert("This resource is already saved.")
     }
   }
 
-  saveUserCategory = state => {
-    console.log("Female category object", this.state.categories)
-    debugger
-    /* When the form is submitted, hit a switch statement and don't break. Set State for each categories to be a copy of the current categories plus the category it equals. */
-
-
+  saveUserCategory = categoryIds => {
+    return this.state.categories.map( category => {
+     return categoryIds.map( id => {
+       if(Number(id) === category.id){
+         this.setState({
+            currentUser: {...this.state.currentUser,
+              categories: [...this.state.currentUser.categories, category]
+            }
+          })
+        }
+      })
+    })
   }
 
+  createUserCategories = category => {
+    const token = localStorage.token;
+    fetch('http://localhost:3000/user_categories', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        user_id: this.state.currentUser.id,
+        category_id: category.id
+        })
+      }).then(resp => resp.json(console.log))
+  }
+
+
   render() {
-    const { currentUser, signupDisplayed, loginDisplayed, resourceMainDisplayed, questionPageDisplayed, profilePageDisplayed, showQuestionPrompt, resources, categories, questions, answers } = this.state;
+    const { currentUser, signupDisplayed, loginDisplayed, resourceMainDisplayed, questionPageDisplayed, profilePageDisplayed, showQuestionPrompt, resources, categories, questions, answers, userCategories } = this.state;
     return (
       <div className="App">
         <Header currentUser={currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome}/>
         { signupDisplayed ? <Signup signup={this.signup} getLogin={this.getLogin}/> : null}
         { questionPageDisplayed ?
-        <QuizOptionPage currentUser={currentUser} resources={resources} categories={categories} getUserCategories={this.getUserCategories} getLogin={this.getLogin} saveUserCategory={this.saveUserCategory} questions={questions} answers={answers}/>
-          : null }
+        <QuizOptionPage currentUser={currentUser} resources={resources} categories={categories}  getLogin={this.getLogin} saveUserCategory={this.saveUserCategory} questions={questions} answers={answers} getHome={this.getHome}/>
+          : null}
         { resourceMainDisplayed ? <ResourceMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserResource={this.saveUserResource}/> : null}
         { loginDisplayed ?
           <Login login={this.login}/>
           : null }
-        { profilePageDisplayed ? <ProfileMainContainer currentUser={currentUser} resources={resources} categories={categories} /> : null}
+        { profilePageDisplayed ? <ProfileMainContainer currentUser={currentUser} resources={resources} categories={categories} userCategories={userCategories}/> : null}
       </div>
     );
   }

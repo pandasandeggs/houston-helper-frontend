@@ -5,23 +5,26 @@ class Quiz extends Component {
   constructor(){
     super();
     this.state = {
-      categories: []
+      category_ids: []
     }
   }
 
-  handleClick = e => { debugger }
-/* disable the other buttons too on click */
-/* this.setState({ categories: [...this.state.categories, e.target.value]})*/
+  handleClick = e => {
+    this.setState({ category_ids: [...this.state.category_ids, e.target.value]})
+  }
+  /* disable the other buttons too on click */
 
-  handleSubmit = e => {
+
+  handleSubmit = (e) => {
     e.preventDefault();
-    this.props.saveUserCategory()
+    this.props.saveUserCategory(this.state.category_ids)
+    this.props.getHome()
   }
 
   getQuestions(){
     console.log("Questions?", this.props.questions)
     return this.props.questions.map( question => {
-      return <div><fieldset>
+      return <div key={question.id}><fieldset>
           <legend>{question.content}</legend><br/>
           {this.getAnswers(question)}
         </fieldset></div>
@@ -31,8 +34,8 @@ class Quiz extends Component {
   getAnswers = question => {
     return this.props.answers.map( answer => {
       if(answer.question_id === question.id){
-        return <div>
-          <input type="radio" id={answer.id} value={answer.content} name={answer.content} onClick={e => this.handleClick(e)}/>
+        return <div key={answer.id}>
+          <input type="radio" id={answer.id} value={answer.category_id} name={answer.content} onClick={e => this.handleClick(e)}/>
           <label>{answer.content}</label>
         </div>
       }
@@ -42,9 +45,9 @@ class Quiz extends Component {
   render(){
     return(
       <div>
-        <form>
+        <form onSubmit={ e => this.handleSubmit(e)}>
           <div>{this.getQuestions()}</div>
-          <button onSubmit={ e => this.handleSubmit(e)} type="submit">Finished</button>
+          <button type="submit">Finished</button>
         </form>
       </div>
     )

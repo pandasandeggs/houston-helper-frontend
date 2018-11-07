@@ -3,6 +3,12 @@ import '../Stylesheets/Profile.css';
 
 class ProfileDisplay extends Component {
 
+  getUserCategories(){
+    return this.props.currentUser.categories.map( category => {
+      return <p>{category.name}</p>
+    })
+  }
+
   render(){
     return(
       <div>
@@ -16,7 +22,7 @@ class ProfileDisplay extends Component {
         </div>
         <div>
           <h3>Your Resource Categories:</h3>
-          <p>"Map through categories here..."</p>
+          {this.getUserCategories()}
         </div>
         <div>
           <button>Edit Profile</button>

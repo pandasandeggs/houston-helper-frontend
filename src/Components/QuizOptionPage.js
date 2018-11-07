@@ -5,7 +5,7 @@ import ResourceMainContainer from '../Containers/ResourceMainContainer'
 class QuizOptionPage extends Component {
 
   state = {
-    takeQuiz: null,
+    takeQuiz: false,
     showQuestionPrompt: true
   }
 
@@ -31,7 +31,7 @@ class QuizOptionPage extends Component {
         </div>
         : null }
         { this.state.takeQuiz ?
-          <Quiz categories={this.props.categories} getUserCategories={this.props.getUserCategories} resources={this.props.resources} questions={this.props.questions} answers={this.props.answers} saveUserCategory={this.props.saveUserCategory}/>
+          <Quiz categories={this.props.categories} getUserCategories={this.props.getUserCategories} resources={this.props.resources} questions={this.props.questions} answers={this.props.answers} saveUserCategory={this.props.saveUserCategory} getHome={this.props.getHome}/>
           : <ResourceMainContainer currentUser={this.props.currentUser} resources={this.props.resources} categories={this.props.categories}/>}
       </div>
     )
