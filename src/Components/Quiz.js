@@ -22,7 +22,6 @@ class Quiz extends Component {
   }
 
   getQuestions(){
-    console.log("Questions?", this.props.questions)
     return this.props.questions.map( question => {
       return <div key={question.id}><fieldset>
           <legend>{question.content}</legend><br/>

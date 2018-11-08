@@ -147,7 +147,7 @@ class App extends Component {
             this.setState({
             categories: data,
             resourceMainDisplayed: true
-          }, console.log(data))
+          })
         })
       }).then(() => this.getQuestions(localStorage.token))
         .then(() => this.getAnswers(localStorage.token))
@@ -161,7 +161,7 @@ class App extends Component {
         }
       }).then(resp => resp.json())
         .then(data => {
-          this.setState({questions: data}, console.log("questions", data))
+          this.setState({questions: data})
       })
   }
 
@@ -173,7 +173,7 @@ class App extends Component {
       }
     }).then(resp => resp.json())
       .then(data => {
-        this.setState({answers: data}, console.log("answers", data))
+        this.setState({answers: data})
     })
   }
 
@@ -244,12 +244,14 @@ class App extends Component {
 
   saveUserCategory = categoryIds => {
     return this.state.categories.map( category => {
+      console.log("category obj?", category)
      return categoryIds.map( id => {
+        console.log("category id", Number(id))
        if(Number(id) === category.id){
          this.setState({
             currentUser: {...this.state.currentUser,
               categories: [...this.state.currentUser.categories, category]
-            }
+            } /* This is only setting state with the last category it iterated through. Need all categories in state... seems like the += issue. */
           })
         }
       })
