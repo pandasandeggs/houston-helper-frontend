@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import '../Stylesheets/Profile.css';
 import ProfileResourceList from './ProfileResourceList'
 import ProfileDisplay from '../Components/ProfileDisplay'
+import ProfileEditForm from '../Components/ProfileEditForm'
 
 class ProfileMainContainer extends Component {
 
   state ={
-    chosenResource: null
+    chosenResource: null,
+    showEditForm: false
     }
 
   handleResourceClick = resource => {
@@ -16,14 +18,23 @@ class ProfileMainContainer extends Component {
     })
   }
 
+  handleEditFormClick = () => {
+    this.setState({
+      showEditForm: true
+    })
+  }
   /* Also need another function to delete resource from user resources*/
 
   render(){
     return(
       <div className="profile-main-container">
         <div className="profile-display">
-          <h1>My Profile</h1>
-          <ProfileDisplay currentUser={this.props.currentUser} categories={this.props.categories} />
+          {this.state.showEditForm ?
+            <div><h1>Edit Profile</h1>
+            <ProfileEditForm currentUser={this.props.currentUser} categories={this.props.categories} editUserProfile={this.props.editUserProfile}/></div>
+            : <div><h1>My Profile</h1>
+            <ProfileDisplay currentUser={this.props.currentUser} categories={this.props.categories} handleEditFormClick={this.handleEditFormClick}/></div>
+          }
         </div>
         <div className="profile-list">
           <h1>My Resources</h1>

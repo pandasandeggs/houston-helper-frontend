@@ -243,36 +243,26 @@ class App extends Component {
   }
 
   saveUserCategory = categoryIds => {
-    return this.state.categories.map( category => {
-      console.log("category obj?", category)
-     return categoryIds.map( id => {
-        console.log("category id", Number(id))
-       if(Number(id) === category.id){
-         this.setState({
-            currentUser: {...this.state.currentUser,
-              categories: [...this.state.currentUser.categories, category]
-            } /* This is only setting state with the last category it iterated through. Need all categories in state... seems like the += issue. */
-          })
-        }
-      })
-    })
-  }
-
-  createUserCategories = category => {
+    console.log('Patching', categoryIds)
     const token = localStorage.token;
-    fetch('http://localhost:3000/user_categories', {
-      method: "POST",
+    fetch(`http://localhost:3000/api/v1/users/${this.state.currentUser.id}`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`
       },
       body: JSON.stringify({
         user_id: this.state.currentUser.id,
-        category_id: category.id
+        category_ids: categoryIds
         })
-      }).then(resp => resp.json(console.log))
+      })
+      .then(resp => resp.json())
+      .then( data => this.setState({ currentUser: data.user}))
   }
 
+  editUserProfile = (username, email, password) => {
+    fetch(`http://localhost:3000/api/v1/users/${this.props.currentUser.id}`)
+  }
 
   render() {
     const { currentUser, signupDisplayed, loginDisplayed, resourceMainDisplayed, questionPageDisplayed, profilePageDisplayed, showQuestionPrompt, resources, categories, questions, answers, userCategories } = this.state;
@@ -287,7 +277,7 @@ class App extends Component {
         { loginDisplayed ?
           <Login login={this.login}/>
           : null }
-        { profilePageDisplayed ? <ProfileMainContainer currentUser={currentUser} resources={resources} categories={categories} userCategories={userCategories}/> : null}
+        { profilePageDisplayed ? <ProfileMainContainer currentUser={currentUser} resources={resources} categories={categories} userCategories={userCategories} editUserProfile={this.editUserProfile}/> : null}
       </div>
     );
   }

@@ -10,7 +10,9 @@ class Quiz extends Component {
   }
 
   handleClick = e => {
-    this.setState({ category_ids: [...this.state.category_ids, e.target.value]})
+    if(!this.state.category_ids.includes(e.target.value)){
+      this.setState({ category_ids: [...this.state.category_ids, e.target.value]})
+    }
   }
   /* disable the other buttons too on click */
 
