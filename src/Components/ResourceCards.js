@@ -12,7 +12,7 @@ class ResourceCards extends Component {
     website: this.props.website
   }
 
-  getCategories(){
+  getCategories = () => {
     if(this.props.categories.length){
       return this.props.categories.map( category => <p>{category.name}</p> )
     } else {

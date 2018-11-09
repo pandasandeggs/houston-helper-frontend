@@ -23,6 +23,7 @@ class ProfileEditForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.editUserProfile(this.state.username, this.state.email, this.state.password, this.state.password_confirmation)
+    this.props.hideEditForm()
   }
 
   handleQuestionClick = () => {

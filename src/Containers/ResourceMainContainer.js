@@ -35,7 +35,7 @@ class ResourceMainContainer extends Component {
             website={this.state.chosenResource.website}
             currentUser={this.props.currentUser}
             saveUserResource={this.props.saveUserResource}
-            saveButtonText={ this.props.currentUser.resources.find( resource => resource.id == this.state.chosenResource.id ) ? 'Saved' : 'Save Resource'}
+            saveButtonText={ this.props.currentUser.resources.find( resource => resource.id === this.state.chosenResource.id ) ? 'Saved' : 'Save Resource'}
             />
             : null}
         </div>

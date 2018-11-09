@@ -25,6 +25,12 @@ class ProfileMainContainer extends Component {
   }
   /* Also need another function to delete resource from user resources*/
 
+  hideEditForm = () => {
+    this.setState({
+      showEditForm: false
+    })
+  }
+
   render(){
     return(
       <div className="profile-main-container">
@@ -35,15 +41,15 @@ class ProfileMainContainer extends Component {
             resources={this.props.resources}
             questions={this.props.questions}
             answers={this.props.answers}
-            saveUserCategory={this.props.saveUserCategory} editUserProfile={this.props.editUserProfile} getHome={this.props.getHome}/></div>
+            saveUserCategory={this.props.saveUserCategory} editUserProfile={this.props.editUserProfile} getHome={this.props.getHome} hideEditForm={this.hideEditForm}/></div>
             : <div><h1>My Profile</h1>
-            <ProfileDisplay currentUser={this.props.currentUser} categories={this.props.categories} handleEditFormClick={this.handleEditFormClick}/></div>
+            <ProfileDisplay currentUser={this.props.currentUser} categories={this.props.categories} handleEditFormClick={this.handleEditFormClick} /></div>
           }
         </div>
         <div className="profile-list">
           <h1>My Resources</h1>
           <ProfileResourceList currentUser={this.props.currentUser} categories={this.props.categories}
-          resources={this.props.resources}
+          resources={this.props.resources} deleteUserResourceFromCard={this.props.deleteUserResourceFromCard}
            /*handleResourceClick={this.handleResourceClick}*//>
         </div>
       </div>

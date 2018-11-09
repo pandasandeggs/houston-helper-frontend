@@ -213,11 +213,6 @@ class App extends Component {
     })
   }
 
-  filterUserResources = resources => {
-    console.log("Need to connect and filter resources")
-    /* somehow connect the users categories to the resource categories and then render the associated resources */
-  }
-
   saveUserResource = resource => {
     const token = localStorage.token;
     if(!this.state.currentUser.resources.find( saved => saved.id === resource.id)){
@@ -240,6 +235,16 @@ class App extends Component {
     } else {
       alert("This resource is already saved.")
     }
+  }
+
+  deleteUserResourceFromCard = id => {
+    const selectedResource = this.state.currentUser.resources.findIndex( resource => resource.id === id)
+    this.state.currentUser.resources.splice(selectedResource, 1)
+    this.setState({
+      currentUser: {...this.state.currentUser,
+        resources: [...this.state.currentUser.resources]
+      }
+    })
   }
 
   saveUserCategory = categoryIds => {
@@ -276,7 +281,6 @@ class App extends Component {
     })
     .then(resp => resp.json())
     .then(data => this.setState({
-      profilePageDisplayed: true,
       currentUser: data.user
     }))
   }
@@ -296,16 +300,15 @@ class App extends Component {
     } else if(profilePageDisplayed === true ){
       return <ProfileMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserCategory={this.saveUserCategory}
       questions={questions}
-      answers={answers} editUserProfile={this.editUserProfile} getHome={this.getHome}/>
+      answers={answers} editUserProfile={this.editUserProfile} getHome={this.getHome} getProfile={this.getProfile} deleteUserResourceFromCard={this.deleteUserResourceFromCard}/>
     }
 
   }
 
   render() {
-    const { currentUser, signupDisplayed, loginDisplayed, resourceMainDisplayed, questionPageDisplayed, profilePageDisplayed, resources, categories, questions, answers } = this.state;
     return (
       <div className="App">
-        <Header currentUser={currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome}/>
+        <Header currentUser={this.state.currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome}/>
         { this.currentRenderedPage() }
       </div>
     );
