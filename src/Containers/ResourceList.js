@@ -4,7 +4,7 @@ import ResourceCards from '../Components/ResourceCards'
 class ResourceList extends Component {
 
   getResources(){
-    console.log("Regular Resources", this.props.resources)
+    console.log(this.props.currentUser)
     if(this.props.resources.length){
       return this.props.resources.map( resource =>
         <div key={resource.id} onClick={ e => this.props.handleResourceClick(resource)}>

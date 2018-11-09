@@ -16,7 +16,7 @@ class ResourceCards extends Component {
     if(this.props.categories.length){
       return this.props.categories.map( category => <p>{category.name}</p> )
     } else {
-      return "None"
+      return <p>None</p>
     }
   }
 

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import '../Stylesheets/Profile.css';
+import Quiz from './Quiz'
 
 class ProfileEditForm extends Component {
 
   state = {
     username: this.props.currentUser.username,
     email: this.props.currentUser.email,
-    password: this.props.currentUser.password
+    password: this.props.currentUser.password,
+    password_confirmation: this.props.currentUser.password,
+    renderQuiz: false
   }
 
   handleUsernameChange = e => {this.setState({username: e.target.value})}
@@ -15,16 +18,24 @@ class ProfileEditForm extends Component {
 
   handlePasswordChange = e => {this.setState({password: e.target.value})}
 
+  handlePasswordConfirmationChange = e => {this.setState({password_confirmation: e.target.value})}
+
   handleSubmit = e => {
     e.preventDefault();
-    this.props.editUserProfile(this.state.username, this.state.email, this.state.password)
+    this.props.editUserProfile(this.state.username, this.state.email, this.state.password, this.state.password_confirmation)
+  }
+
+  handleQuestionClick = () => {
+    this.setState({
+      renderQuiz: true
+    })
   }
 
   render(){
-    const { username, email, password } = this.state;
+    const { username, email, password, password_confirmation } = this.state;
     return(
       <div>
-        <form>
+        <form onSubmit={ e => this.handleSubmit(e)}>
           <div>
             <input type="text" value={username} name="Username" onChange={this.handleUsernameChange}/>
           </div>
@@ -34,15 +45,22 @@ class ProfileEditForm extends Component {
           </div>
               <br/>
           <div>
-            <input type="password" value={password} name="New Password" onChange={this.handlePasswordChange}/>
+            <input type="password" value={password} placeholder="New Password" onChange={this.handlePasswordChange}/>
           </div>
               <br/>
+          <div>
+            <input type="password" value={password_confirmation} placeholder="Password Confirmation" onChange={this.handlePasswordConfirmationChange}/>
+          </div>
+            <br/>
           <div>
             <button type="submit">Save Profile</button>
           </div>
         </form>
+        <br/>
         <div>
-          <button>Retake Questionnaire?</button>
+          <button onClick={() => this.handleQuestionClick()}>Retake Questionnaire?</button>
+          { this.state.renderQuiz ? <Quiz categories={this.props.categories} getUserCategories={this.props.getUserCategories} resources={this.props.resources} questions={this.props.questions} answers={this.props.answers} saveUserCategory={this.props.saveUserCategory} getHome={this.props.getHome} />
+          : null }
         </div>
       </div>
     )

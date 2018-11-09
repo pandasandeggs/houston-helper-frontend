@@ -31,7 +31,11 @@ class ProfileMainContainer extends Component {
         <div className="profile-display">
           {this.state.showEditForm ?
             <div><h1>Edit Profile</h1>
-            <ProfileEditForm currentUser={this.props.currentUser} categories={this.props.categories} editUserProfile={this.props.editUserProfile}/></div>
+            <ProfileEditForm currentUser={this.props.currentUser} categories={this.props.categories}
+            resources={this.props.resources}
+            questions={this.props.questions}
+            answers={this.props.answers}
+            saveUserCategory={this.props.saveUserCategory} editUserProfile={this.props.editUserProfile} getHome={this.props.getHome}/></div>
             : <div><h1>My Profile</h1>
             <ProfileDisplay currentUser={this.props.currentUser} categories={this.props.categories} handleEditFormClick={this.handleEditFormClick}/></div>
           }

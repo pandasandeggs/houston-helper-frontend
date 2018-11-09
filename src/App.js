@@ -16,9 +16,9 @@ class App extends Component {
     super();
     this.state = {
       currentUser: null,
-      signupDisplayed: true,
+      signupDisplayed: localStorage.token ? false : true,
       loginDisplayed: false,
-      resourceMainDisplayed: false,
+      resourceMainDisplayed: localStorage.token ? true : false,
       questionPageDisplayed: false,
       profilePageDisplayed: false,
       quizDisplayed: false,
@@ -41,7 +41,7 @@ class App extends Component {
         .then(data => {
           if(!data.error){
             this.setState({
-              currentUser: data,
+              currentUser: data.user,
               signupDisplayed: false,
               loginDisplayed: false
             })
@@ -243,7 +243,6 @@ class App extends Component {
   }
 
   saveUserCategory = categoryIds => {
-    console.log('Patching', categoryIds)
     const token = localStorage.token;
     fetch(`http://localhost:3000/api/v1/users/${this.state.currentUser.id}`, {
       method: "PATCH",
@@ -260,24 +259,54 @@ class App extends Component {
       .then( data => this.setState({ currentUser: data.user}))
   }
 
-  editUserProfile = (username, email, password) => {
-    fetch(`http://localhost:3000/api/v1/users/${this.props.currentUser.id}`)
+  editUserProfile = (username, email, password, confirmation) => {
+    const token = localStorage.token;
+    fetch(`http://localhost:3000/api/v1/users/${this.state.currentUser.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        username: username,
+        email: email,
+        password: password,
+        password_confirmation: confirmation
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => this.setState({
+      profilePageDisplayed: true,
+      currentUser: data.user
+    }))
+  }
+
+  currentRenderedPage = () => {
+
+    const { currentUser, signupDisplayed, loginDisplayed, resourceMainDisplayed, questionPageDisplayed, profilePageDisplayed, resources, categories, questions, answers } = this.state;
+
+    if(signupDisplayed === true){
+      return <Signup signup={this.signup} getLogin={this.getLogin}/>
+    } else if(loginDisplayed === true ){
+      return <Login login={this.login}/>
+    } else if(resourceMainDisplayed === true ){
+      return <ResourceMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserResource={this.saveUserResource}/>
+    } else if(questionPageDisplayed === true ){
+      return <QuizOptionPage currentUser={currentUser} resources={resources} categories={categories}  getLogin={this.getLogin} saveUserCategory={this.saveUserCategory} questions={questions} answers={answers} getHome={this.getHome}/>
+    } else if(profilePageDisplayed === true ){
+      return <ProfileMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserCategory={this.saveUserCategory}
+      questions={questions}
+      answers={answers} editUserProfile={this.editUserProfile} getHome={this.getHome}/>
+    }
+
   }
 
   render() {
-    const { currentUser, signupDisplayed, loginDisplayed, resourceMainDisplayed, questionPageDisplayed, profilePageDisplayed, showQuestionPrompt, resources, categories, questions, answers, userCategories } = this.state;
+    const { currentUser, signupDisplayed, loginDisplayed, resourceMainDisplayed, questionPageDisplayed, profilePageDisplayed, resources, categories, questions, answers } = this.state;
     return (
       <div className="App">
         <Header currentUser={currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome}/>
-        { signupDisplayed ? <Signup signup={this.signup} getLogin={this.getLogin}/> : null}
-        { questionPageDisplayed ?
-        <QuizOptionPage currentUser={currentUser} resources={resources} categories={categories}  getLogin={this.getLogin} saveUserCategory={this.saveUserCategory} questions={questions} answers={answers} getHome={this.getHome}/>
-          : null}
-        { resourceMainDisplayed ? <ResourceMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserResource={this.saveUserResource}/> : null}
-        { loginDisplayed ?
-          <Login login={this.login}/>
-          : null }
-        { profilePageDisplayed ? <ProfileMainContainer currentUser={currentUser} resources={resources} categories={categories} userCategories={userCategories} editUserProfile={this.editUserProfile}/> : null}
+        { this.currentRenderedPage() }
       </div>
     );
   }
