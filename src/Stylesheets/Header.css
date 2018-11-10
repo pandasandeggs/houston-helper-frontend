@@ -1,8 +1,13 @@
-.logout-button {
-  float: right;
-  display: inline-block;
-}
-.profile-button {
+.home-button {
+  position: relative;
   float: left;
-  display: inline-block;
+}
+
+.profile-button {
+  position: relative;
+}
+
+.logout-button {
+  position: relative;
+  float: right;
 }

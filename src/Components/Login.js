@@ -24,34 +24,35 @@ class Login extends Component {
     const { username, password } = this.state;
 
     return (
-      <div className="form">
+      <div>
+        <h1 className="title">Houston Helper</h1>
+        <div className="form">
 
-      <div className="tab-content">
-        <div id="login">
-          <h1>Welcome Back!</h1>
+        <div className="tab-content">
+          <div id="login">
+            <h1>Welcome Back!</h1>
 
-          <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
+              <div className="field-wrap">
+              <label>
+                Username
+              </label>
+              <input type="text" value={username} onChange={this.handleUsernameChange}/>
+            </div>
+
             <div className="field-wrap">
-            <label>
-              Username
-            </label>
-            <input type="text" value={username} onChange={this.handleUsernameChange}/>
+              <label>
+                Password
+              </label>
+              <input type="password" value={password} onChange={this.handlePasswordChange}/>
+            </div>
+
+            <button className="button button-block">Log In</button>
+            </form>
+
+            </div>
           </div>
-
-          <div className="field-wrap">
-            <label>
-              Password
-            </label>
-            <input type="password" value={password} onChange={this.handlePasswordChange}/>
-          </div>
-
-          <button className="button button-block">Log In</button>
-          </form>
-
-          </div>
-
         </div>
-
       </div>
     )
   }

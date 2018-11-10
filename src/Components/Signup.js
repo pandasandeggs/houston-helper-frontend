@@ -31,48 +31,51 @@ class Signup extends Component {
     const { username, email, password, confirmation } = this.state;
 
     return (
-      <div className="form">
+      <div>
+      <h1 className="title">Houston Helper</h1>
+        <div className="form">
 
-      <div className="tab-content">
-        <div id="signup">
-          <h1>Sign Up Here</h1>
+        <div className="tab-content">
+          <div id="signup">
+            <h1>Sign Up Here</h1>
 
-          <form onSubmit={this.handleSubmit} >
-            <div className="field-wrap">
-              <label>
-                Username
-              </label>
-              <input type="text" value={username} onChange={this.handleUsernameChange}/>
+            <form onSubmit={this.handleSubmit} >
+              <div className="field-wrap">
+                <label>
+                  Username
+                </label>
+                <input type="text" value={username} onChange={this.handleUsernameChange}/>
+              </div>
+
+              <div className="field-wrap">
+                <label>
+                  Email Address
+                </label>
+                <input type="email" value={email} onChange={this.handleEmailChange}/>
+              </div>
+
+              <div className="field-wrap">
+                <label>
+                  Create Password
+                </label>
+                <input type="password" value={password} onChange={this.handlePasswordChange}/>
+              </div>
+
+              <div className="field-wrap">
+                <label>
+                  Confirm Password
+                </label>
+                <input type="password" value={confirmation} onChange={this.handleConfirmationChange}/>
+              </div>
+              <br/>
+              <button type="submit" className="button button-block">Sign Up</button>
+            </form>
+            <br/><br/><br/>
+            <div>
+              <button onClick={ () => this.props.getLogin() }>Already registered? Login Here.</button>
             </div>
 
-            <div className="field-wrap">
-              <label>
-                Email Address
-              </label>
-              <input type="email" value={email} onChange={this.handleEmailChange}/>
-            </div>
-
-            <div className="field-wrap">
-              <label>
-                Create Password
-              </label>
-              <input type="password" value={password} onChange={this.handlePasswordChange}/>
-            </div>
-
-            <div className="field-wrap">
-              <label>
-                Confirm Password
-              </label>
-              <input type="password" value={confirmation} onChange={this.handleConfirmationChange}/>
-            </div>
-            <br/>
-            <button type="submit" className="button button-block">Sign Up</button>
-          </form>
-          <br/><br/><br/>
-          <div>
-            <button onClick={ () => this.props.getLogin() }>Already registered? Login Here.</button>
           </div>
-
         </div>
       </div>
     </div>

@@ -16,17 +16,17 @@ class ProfileResourceCards extends Component {
     })
   }
 
-  deleteUserResource = (resource) => {
+  deleteUserResource = (id) => {
     const token = localStorage.token;
-    if(!this.state.currentUser.resources.find( saved => saved.id === resource.id)){
-      return fetch(`http://localhost:3000/user_resources/${resource.id}`, {
+    if(this.state.currentUser.resources.find( saved => saved.id === id)){
+      return fetch(`http://localhost:3000/api/v1/users/${this.props.currentUser.id}/resources/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
         }
       }).then(resp => resp.json())
-        .then(this.props.deleteUserResourceFromCard(resource.id))
+        .then(this.props.deleteUserResourceFromCard(id))
     }
 
   }
@@ -36,7 +36,7 @@ class ProfileResourceCards extends Component {
       <div key={this.props.resource.id}>
         <h3>{this.props.resource.name}</h3>
         <button className="document-show-button" onClick={ e => this.getDocumentModal(e) }>See Documents</button>
-        <button className="document-delete-button" id={this.props.resource.id} onClick={ e => console.log(e.target)}>Delete Resource</button>
+        <button className="document-delete-button" id={this.props.resource.id} onClick={ e => console.log(e.target.id)}>Delete Resource</button>
         { this.state.showModal ?
           <div>
           <DocumentModal resource={this.props.resource}/>

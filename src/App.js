@@ -294,13 +294,16 @@ class App extends Component {
     } else if(loginDisplayed === true ){
       return <Login login={this.login}/>
     } else if(resourceMainDisplayed === true ){
-      return <ResourceMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserResource={this.saveUserResource}/>
+      return <div><Header currentUser={this.state.currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome}/>
+      <ResourceMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserResource={this.saveUserResource}/></div>
     } else if(questionPageDisplayed === true ){
-      return <QuizOptionPage currentUser={currentUser} resources={resources} categories={categories}  getLogin={this.getLogin} saveUserCategory={this.saveUserCategory} questions={questions} answers={answers} getHome={this.getHome}/>
+      return <div><Header currentUser={this.state.currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome}/>
+      <QuizOptionPage currentUser={currentUser} resources={resources} categories={categories}  getLogin={this.getLogin} saveUserCategory={this.saveUserCategory} questions={questions} answers={answers} getHome={this.getHome}/></div>
     } else if(profilePageDisplayed === true ){
-      return <ProfileMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserCategory={this.saveUserCategory}
+      return <div><Header currentUser={this.state.currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome}/>
+      <ProfileMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserCategory={this.saveUserCategory}
       questions={questions}
-      answers={answers} editUserProfile={this.editUserProfile} getHome={this.getHome} getProfile={this.getProfile} deleteUserResourceFromCard={this.deleteUserResourceFromCard}/>
+      answers={answers} editUserProfile={this.editUserProfile} getHome={this.getHome} getProfile={this.getProfile} deleteUserResourceFromCard={this.deleteUserResourceFromCard}/></div>
     }
 
   }
@@ -308,7 +311,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header currentUser={this.state.currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome}/>
         { this.currentRenderedPage() }
       </div>
     );

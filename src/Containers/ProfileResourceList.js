@@ -7,7 +7,7 @@ class ProfileResourceList extends Component {
   getUserResources(){
     return this.props.currentUser.resources.map(resource =>
       <div key={resource.id}>
-        <ProfileResourceCards resource={resource} deleteUserResourceFromCard={this.props.deleteUserResourceFromCard}/>
+        <ProfileResourceCards currentUser={this.props.currentUser} resource={resource} deleteUserResourceFromCard={this.props.deleteUserResourceFromCard}/>
       </div>
     )
   }
