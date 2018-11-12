@@ -20,15 +20,6 @@ class ResourceList extends Component {
     }
   }
 
-  /*getResources(){
-    return this.props.resources.map( resource => {
-      return <div key={resource.id} onClick={ e => this.props.handleResourceClick(resource)}>
-          <ResourceCards id={resource.id} name={resource.name} categories={resource.categories}/>
-        </div>
-
-    })
-  }*/
-
   render(){
     console.log("Inside Render", this.props.currentUser)
     return(

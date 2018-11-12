@@ -238,6 +238,7 @@ class App extends Component {
   }
 
   deleteUserResourceFromCard = id => {
+    console.log("...and clicked")
     const selectedResource = this.state.currentUser.resources.findIndex( resource => resource.id === id)
     this.state.currentUser.resources.splice(selectedResource, 1)
     this.setState({

@@ -24,7 +24,7 @@ class Login extends Component {
     const { username, password } = this.state;
 
     return (
-      <div>
+      <div className="login-page">
         <h1 className="title">Houston Helper</h1>
         <div className="form">
 

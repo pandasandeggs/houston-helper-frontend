@@ -16,18 +16,24 @@ class ProfileResourceCards extends Component {
     })
   }
 
-  deleteUserResource = (id) => {
+  deleteUserResource = (user, resource) => {
+    console.log("Clicked")
+    const user_id = user
+    const resource_id = resource
     const token = localStorage.token;
-    if(this.state.currentUser.resources.find( saved => saved.id === id)){
-      return fetch(`http://localhost:3000/api/v1/users/${this.props.currentUser.id}/resources/${id}`, {
+    /*if(this.state.currentUser && this.state.currentUser.resources.find( saved => saved.resource_id === resource_id)){*/
+      return fetch(`http://localhost:3000/api/v1/users/${user_id}/resources/${resource_id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
-        }
-      }).then(resp => resp.json())
-        .then(this.props.deleteUserResourceFromCard(id))
-    }
+        },
+        body: JSON.stringify({
+          user_id: user_id,
+          resource_id: resource_id
+        })
+      }).then(this.props.deleteUserResourceFromCard(resource_id))
+    /*}*/
 
   }
 
@@ -36,9 +42,9 @@ class ProfileResourceCards extends Component {
       <div key={this.props.resource.id}>
         <h3>{this.props.resource.name}</h3>
         <button className="document-show-button" onClick={ e => this.getDocumentModal(e) }>See Documents</button>
-        <button className="document-delete-button" id={this.props.resource.id} onClick={ e => console.log(e.target.id)}>Delete Resource</button>
+        <button className="document-delete-button" id={this.props.resource.id} onClick={ e => this.deleteUserResource(this.props.currentUser.id, e.target.id)}>Delete Resource</button>
         { this.state.showModal ?
-          <div>
+        <div>
           <DocumentModal resource={this.props.resource}/>
         </div>
         : null }

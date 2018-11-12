@@ -31,7 +31,7 @@ class Signup extends Component {
     const { username, email, password, confirmation } = this.state;
 
     return (
-      <div>
+      <div className="signup-page">
       <h1 className="title">Houston Helper</h1>
         <div className="form">
 
