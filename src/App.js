@@ -65,7 +65,8 @@ class App extends Component {
             .then(data => {
               this.setState({categories: data})
           })
-        })
+        }).then(() => this.getQuestions(localStorage.token))
+          .then(() => this.getAnswers(localStorage.token))
     }
   }
 
@@ -248,6 +249,10 @@ class App extends Component {
   }
 
   saveUserCategory = categoryIds => {
+    /*categoryIds = categoryIds.filter( (category_id, index ) => {
+      console.log("category_id", category_id, "index", index, "categoryIds", categoryIds)
+      return categoryIds.indexOf(category_id) === index
+    })*/
     const token = localStorage.token;
     fetch(`http://localhost:3000/api/v1/users/${this.state.currentUser.id}`, {
       method: "PATCH",

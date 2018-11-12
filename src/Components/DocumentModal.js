@@ -6,8 +6,8 @@ class DocumentModal extends Component {
   getDocument = () => {
     console.log("the docs?", this.props.resource.documents)
     if(this.props.resource.documents.length){
-      this.props.resource.documents.map( document => {
-        return <input name={document.name} type="checkbox" id={document.id} value={document.name}/>
+      return this.props.resource.documents.map( document => {
+        return <div><input className="checkboxes" name={document.name} type="checkbox" id={document.id} value={document.name}/><label>{document.name}</label><br/></div>
       })
     } else {
       return <p>No documents are needed to apply for this resource. Please contact {this.props.resource.name} for more information about how to acquire their services.</p>

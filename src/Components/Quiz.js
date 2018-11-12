@@ -5,21 +5,20 @@ class Quiz extends Component {
   constructor(){
     super();
     this.state = {
-      category_ids: []
+      category_ids: {}
     }
   }
 
-  handleClick = e => {
-    if(!this.state.category_ids.includes(e.target.value)){
-      this.setState({ category_ids: [...this.state.category_ids, e.target.value]})
+  handleClick = (question_id, category_id) => {
+    if(!Object.values(this.state.category_ids).includes(category_id)){
+      this.setState({ category_ids: { ...this.state.category_ids, [question_id]: category_id } })
     }
   }
   /* disable the other buttons too on click */
 
-
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.saveUserCategory(this.state.category_ids)
+    this.props.saveUserCategory(Object.values(this.state.category_ids))
     this.props.getHome()
   }
 
@@ -33,13 +32,14 @@ class Quiz extends Component {
   }
 
   getAnswers = question => {
-    return this.props.answers.map( answer => {
-      if(answer.question_id === question.id){
-        return <div key={answer.id}>
-          <input type="radio" id={answer.id} value={answer.category_id} name={answer.content} onClick={e => this.handleClick(e)}/>
+    let answers = this.props.answers.filter( answer => answer.question_id === question.id)
+    return answers.map( answer => {
+      return (
+        <div key={answer.id}>
+          <input type="radio" id={answer.id} value={answer.category_id} name={question.id} onClick={e => this.handleClick(question.id, answer.category_id)}/>
           <label>{answer.content}</label>
         </div>
-      }
+      )
     })
   }
 

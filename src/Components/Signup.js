@@ -31,12 +31,12 @@ class Signup extends Component {
     const { username, email, password, confirmation } = this.state;
 
     return (
-      <div className="signup-page">
-      <h1 className="title">Houston Helper</h1>
+      <div  className="bgimg w3-display-container w3-text-white">
+      <h1>Houston Helper</h1>
         <div className="form">
 
         <div className="tab-content">
-          <div id="signup">
+          <div id="signuplogin">
             <h1>Sign Up Here</h1>
 
             <form onSubmit={this.handleSubmit} >

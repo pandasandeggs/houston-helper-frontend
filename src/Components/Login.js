@@ -24,12 +24,12 @@ class Login extends Component {
     const { username, password } = this.state;
 
     return (
-      <div className="login-page">
-        <h1 className="title">Houston Helper</h1>
+      <div className="bgimg w3-display-container w3-text-white">
+        <h1>Houston Helper</h1>
         <div className="form">
 
         <div className="tab-content">
-          <div id="login">
+          <div id="signuplogin">
             <h1>Welcome Back!</h1>
 
             <form onSubmit={this.handleSubmit}>
