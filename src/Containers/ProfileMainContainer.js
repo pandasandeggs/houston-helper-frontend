@@ -50,7 +50,7 @@ class ProfileMainContainer extends Component {
           <h1>My Resources</h1>
           <ProfileResourceList currentUser={this.props.currentUser} categories={this.props.categories}
           resources={this.props.resources} deleteUserResourceFromCard={this.props.deleteUserResourceFromCard}
-           /*handleResourceClick={this.handleResourceClick}*//>
+          />
         </div>
       </div>
     )

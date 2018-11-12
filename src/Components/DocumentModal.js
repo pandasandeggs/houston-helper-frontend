@@ -7,7 +7,7 @@ class DocumentModal extends Component {
     console.log("the docs?", this.props.resource.documents)
     if(this.props.resource.documents.length){
       this.props.resource.documents.map( document => {
-        return <input type="checkbox" id={document.id} name={document.name} value={document.name}/>
+        return <input name={document.name} type="checkbox" id={document.id} value={document.name}/>
       })
     } else {
       return <p>No documents are needed to apply for this resource. Please contact {this.props.resource.name} for more information about how to acquire their services.</p>
@@ -17,16 +17,15 @@ class DocumentModal extends Component {
   render(){
     return(
       <div className="w3-container">
-        <div id="id01" >
+        <div>
           <div className="w3-modal-content w3-animate-zoom w3-card-4">
             <header className="w3-container w3-green">
               <h3>Documents to apply for {this.props.resource.name}:</h3>
-              {this.getDocument()}
             </header>
             <div className="w3-container w3-modal-content">
-              <div>
+              <form>
                 {this.getDocument()}
-              </div>
+              </form>
             </div>
           </div>
         </div>
