@@ -14,6 +14,7 @@ class QuizOptionPage extends Component {
   }
 
   handleResourceClick = e => {
+    this.props.getHome()
     this.setState({takeQuiz: false, showQuestionPrompt: false})
   }
 

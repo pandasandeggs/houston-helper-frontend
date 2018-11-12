@@ -299,7 +299,7 @@ class App extends Component {
       <ResourceMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserResource={this.saveUserResource}/></div>
     } else if(questionPageDisplayed === true ){
       return <div><Header currentUser={this.state.currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome}/>
-      <QuizOptionPage currentUser={currentUser} resources={resources} categories={categories}  getLogin={this.getLogin} saveUserCategory={this.saveUserCategory} questions={questions} answers={answers} getHome={this.getHome}/></div>
+      <QuizOptionPage currentUser={currentUser} resources={resources} categories={categories}  getLogin={this.getLogin} saveUserCategory={this.saveUserCategory} questions={questions} answers={answers} getHome={this.getHome} /></div>
     } else if(profilePageDisplayed === true ){
       return <div><Header currentUser={this.state.currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome}/>
       <ProfileMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserCategory={this.saveUserCategory}

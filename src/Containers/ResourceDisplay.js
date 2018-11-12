@@ -18,7 +18,7 @@ class ResourceDisplay extends Component {
           <button
           id={this.props.id}
           onClick={ e => this.props.saveUserResource(this.props)}
-          onMouseUp={this.handleOnMouseUp}>{this.props.saveButtonText}</button>
+          >{this.props.saveButtonText}</button>
         </div>
       </div>
     )
