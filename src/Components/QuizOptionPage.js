@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Quiz from './Quiz'
 import ResourceMainContainer from '../Containers/ResourceMainContainer'
+import '../Stylesheets/Quiz.css'
 
 class QuizOptionPage extends Component {
 
@@ -22,13 +23,13 @@ class QuizOptionPage extends Component {
     return(
       <div>
         { this.state.showQuestionPrompt ?
-          <div>
+          <div className="quiz-prompt">
           <h1>Hello {this.props.currentUser.username}!</h1>
-          <p>Welcome to Houston Helper! This app was created to help you and/or your loved ones find resources in your time of need. In order to better assist you with that search, we would like you to answer a few questions to help identify which resources may directly impact your life. You may fill out the form for yourself or on another persons behalf. If you skip the questions now, you will still have an opportunity to answer them later. Would you like to take the questionnaire? </p>
+          <h4>Welcome to Houston Helper! This app was created to help you and/or your loved ones find resources in your time of need. In order to better assist you with that search, we would like you to answer a few questions to help identify which resources may directly impact your life. You may fill out the form for yourself or on another persons behalf. If you skip the questions now, you will still have an opportunity to answer them later. Would you like to take the questionnaire? </h4>
 
-          <button onClick={this.handleQuizClick}>Yes, I will answer a few questions!</button>
+          <button className="quiz-button" onClick={this.handleQuizClick}>Answer questions!</button>
           <br/>
-          <button onClick={this.handleResourceClick}>No thanks. Take me directly to the resources.</button>
+          <button className="resource-button" onClick={this.handleResourceClick}>View resources!</button>
         </div>
         : null }
         { this.state.takeQuiz ?

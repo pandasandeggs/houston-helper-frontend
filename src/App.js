@@ -187,6 +187,16 @@ class App extends Component {
     })
   }
 
+  getSignup = () => {
+    this.setState({
+      signupDisplayed: true,
+      loginDisplayed: false,
+      questionPageDisplayed: false,
+      resourceMainDisplayed: false,
+      profilePageDisplayed: false
+    })
+  }
+
   getLogin = () => {
     this.setState({
       signupDisplayed: false,
@@ -297,7 +307,7 @@ class App extends Component {
     if(signupDisplayed === true){
       return <Signup signup={this.signup} getLogin={this.getLogin}/>
     } else if(loginDisplayed === true ){
-      return <Login login={this.login}/>
+      return <Login login={this.login} getSignUp={this.getSignup}/>
     } else if(resourceMainDisplayed === true ){
       return <div><Header currentUser={this.state.currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome}/>
       <ResourceMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserResource={this.saveUserResource}/></div>

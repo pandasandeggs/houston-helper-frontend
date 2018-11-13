@@ -6,15 +6,16 @@ import DocumentModal from './DocumentModal'
 class ProfileResourceCards extends Component {
 
   state = {
-    showModal: false
+    showModal: false,
+    documentWords: false
   }
 
   getDocumentModal = e => {
     console.log("Modal click successful")
     this.setState({
       showModal: !this.state.showModal,
+      documentWords: !this.state.documentWords
     })
-    this.props.clickShowDocument()
   }
 
   deleteUserResource = (userId, resourceId) => {
@@ -34,7 +35,7 @@ class ProfileResourceCards extends Component {
     return(
       <div key={this.props.resource.id}>
         <h3>{this.props.resource.name}</h3>
-        <button className="document-show-button" id={this.props.resource.id} onClick={ e => this.getDocumentModal() }>{this.props.showDocumentButton}</button>
+        { this.state.documentWords ? <button className="document-show-button" id={this.props.resource.id} onClick={ e => this.getDocumentModal(e) }>Hide Documents</button> : <button className="document-show-button" id={this.props.resource.id} onClick={ e => this.getDocumentModal(e) }>Show Documents</button>}
         <button className="document-delete-button" id={this.props.resource.id} onClick={ e => this.deleteUserResource(this.props.currentUser.id, e.target.id)}>Delete Resource</button>
 
         { this.state.showModal ?
@@ -42,6 +43,7 @@ class ProfileResourceCards extends Component {
           <DocumentModal resource={this.props.resource}/>
         </div>
         : null }
+
       </div>
     )
   }

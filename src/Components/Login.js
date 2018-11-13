@@ -49,7 +49,10 @@ class Login extends Component {
 
             <button className="button button-block">Log In</button>
             </form>
-
+            <br/><br/><br/>
+            <div>
+              <button onClick={ () => this.props.getSignUp() }>New Here? Signup.</button>
+            </div>
             </div>
           </div>
         </div>

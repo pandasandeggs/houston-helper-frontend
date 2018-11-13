@@ -1,0 +1,17 @@
+.quiz-prompt {
+  text-align: center;
+  margin-bottom: 20em;
+  padding: 5em;
+}
+
+.quiz-button {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.resource-button {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1em;
+}
