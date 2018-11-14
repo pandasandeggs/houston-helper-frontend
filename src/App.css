@@ -473,74 +473,6 @@
 			font-size: 0.8em;
 		}
 
-/*Profile Buttons*/
-
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
-.profile-button {
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	-o-appearance: none;
-	-ms-appearance: none;
-	appearance: none;
-	background: none;
-	border-radius: none;
-	border: 2px solid;
-	border-color: #82b440;
-	color: #82b440;
-	cursor: pointer;
-	display: inline-block;
-	padding: 0.90em 1.2em;
-	letter-spacing: 1px;
-	text-align: center;
-	text-decoration: none;
-	text-transform: uppercase;
-	font-size: .9em;
-	-moz-transition: all 0.35s ease-in-out;
-	-webkit-transition: all 0.35s ease-in-out;
-	-o-transition: all 0.35s ease-in-out;
-	-ms-transition: all 0.35s ease-in-out;
-	transition: all 0.35s ease-in-out;
-}
-
-	input[type="submit"]:hover,
-	input[type="reset"]:hover,
-	input[type="button"]:hover,
-	.profile-button:hover {
-		background: #82b440;
-		color: white;
-	}
-
-	input[type="submit"].alt,
-	input[type="reset"].alt,
-	input[type="button"].alt,
-	.profile-button.alt {
-		border-color: inherit;
-		color: inherit;
-	}
-
-		input[type="submit"].alt:hover,
-		input[type="reset"].alt:hover,
-		input[type="button"].alt:hover,
-		.profile-button.alt:hover {
-			background: white;
-			color: #82b440;
-		}
-
-	input[type="submit"].fit,
-	input[type="reset"].fit,
-	input[type="button"].fit,
-	.profile-button.fit {
-		width: 100%;
-	}
-
-	input[type="submit"].small,
-	input[type="reset"].small,
-	input[type="button"].small,
-	.profile-button.small {
-		font-size: 0.8em;
-	}
 
 /* Wrapper */
 
@@ -783,20 +715,20 @@ input[type="button"],
 
 		#main #sidebar .major {
 			text-align: left;
-			width: 30%
+			width: 40%
 		}
 
 		#main #content .major {
 			text-align: left;
 			float: left;
-			width: 60%;
+			width: 55%;
 			margin-bottom: 5px;
 		}
 
 		#main #content section {
 			text-align: left;
 			float: right;
-			width: 60%;
+			width: 55%;
 			padding-bottom: 2em;
 			line-height: 1.2;
 		}
@@ -806,6 +738,7 @@ input[type="button"],
 			margin-right: 0em;
 			float: left;
 			padding-bottom: 2em;
+			width: 45%;
 		}
 
 			#main #sidebar section:first-child {
@@ -813,7 +746,8 @@ input[type="button"],
 			}
 
 		#main #sidebar .major {
-			padding-bottom: 2em;
+			padding-bottom: .5em;
+			line-height: 1.25;
 		}
 
 			#main #sidebar .major h2 {

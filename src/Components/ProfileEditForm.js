@@ -54,12 +54,12 @@ class ProfileEditForm extends Component {
           </div>
             <br/>
           <div>
-            <button className="button" type="submit">Save Profile</button>
+            <button className="profile-button" type="submit">Save Profile</button>
           </div>
         </form>
         <br/>
         <div>
-          <button className="button" onClick={() => this.handleQuestionClick()}>Retake Questionnaire?</button>
+          <button className="profile-button" onClick={() => this.handleQuestionClick()}>Retake Questionnaire?</button>
           { this.state.renderQuiz ? <Quiz categories={this.props.categories} getUserCategories={this.props.getUserCategories} resources={this.props.resources} questions={this.props.questions} answers={this.props.answers} saveUserCategory={this.props.saveUserCategory} getHome={this.props.getHome} />
           : null }
         </div>
