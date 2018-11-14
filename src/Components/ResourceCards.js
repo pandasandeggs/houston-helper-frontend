@@ -22,13 +22,14 @@ class ResourceCards extends Component {
 
   render(){
     return(
-      <div className="resource-card" key={this.props.id}>
-        <h2>{this.props.name}</h2>
-        <p>Related to:</p> {this.getCategories()}
-      </div>
+      <li key={this.props.id}>
+        <a>{this.props.name}</a>
+      </li>
     )
   }
 
 }
+
+/*<h4>Categories:</h4> {this.getCategories()}*/
 
 export default ResourceCards;

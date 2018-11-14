@@ -48,7 +48,7 @@ class Quiz extends Component {
       <div>
         <form onSubmit={ e => this.handleSubmit(e)}>
           <div>{this.getQuestions()}</div>
-          <button type="submit">Finished</button>
+          <button className="profile-button" type="submit">Finished</button>
         </form>
       </div>
     )

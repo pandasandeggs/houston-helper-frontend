@@ -31,52 +31,54 @@ class Signup extends Component {
     const { username, email, password, confirmation } = this.state;
 
     return (
-      <div  className="bgimg w3-display-container w3-text-white">
-      <h1>Houston Helper</h1>
-        <div className="form">
+      <div class="wrapper style1">
+        <div id="banner">
+          <section class="container">
+          <h1>Houston Helper</h1>
+            <div id="form">
 
-        <div className="tab-content">
-          <div id="signuplogin">
-            <h1>Sign Up Here</h1>
+            <div className="tab-content">
+              <div id="signuplogin">
+                <h1>Sign Up Here</h1>
 
-            <form onSubmit={this.handleSubmit} >
-              <div className="field-wrap">
-                <label>
-                  Username
-                </label>
-                <input type="text" value={username} onChange={this.handleUsernameChange}/>
+                <form onSubmit={this.handleSubmit} >
+                  <div>
+                    <label>
+                      Username
+                    </label>
+                    <input className="slinput" type="text" value={username} onChange={this.handleUsernameChange}/>
+                  </div>
+
+                  <div>
+                    <label>
+                      Email Address
+                    </label>
+                    <input className="slinput" type="email" value={email} onChange={this.handleEmailChange}/>
+                  </div>
+
+                  <div>
+                    <label>
+                      Create Password
+                    </label>
+                    <input className="slinput" type="password" value={password} onChange={this.handlePasswordChange}/>
+                  </div>
+
+                  <div>
+                    <label>
+                      Confirm Password
+                    </label>
+                    <input className="slinput" type="password" value={confirmation} onChange={this.handleConfirmationChange}/>
+                  </div>
+                  <br/>
+                  <button type="submit" className="button">Sign Up</button>
+                </form>
+                <br/><br/><br/>
+                  <button className="button" onClick={ () => this.props.getLogin() }>Already registered? Login Here.</button>
+
               </div>
-
-              <div className="field-wrap">
-                <label>
-                  Email Address
-                </label>
-                <input type="email" value={email} onChange={this.handleEmailChange}/>
-              </div>
-
-              <div className="field-wrap">
-                <label>
-                  Create Password
-                </label>
-                <input type="password" value={password} onChange={this.handlePasswordChange}/>
-              </div>
-
-              <div className="field-wrap">
-                <label>
-                  Confirm Password
-                </label>
-                <input type="password" value={confirmation} onChange={this.handleConfirmationChange}/>
-              </div>
-              <br/>
-              <button type="submit" className="button button-block">Sign Up</button>
-            </form>
-            <br/><br/><br/>
-            <div>
-              <button onClick={ () => this.props.getLogin() }>Already registered? Login Here.</button>
             </div>
-
           </div>
-        </div>
+        </section>
       </div>
     </div>
 

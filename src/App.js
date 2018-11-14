@@ -22,6 +22,8 @@ class App extends Component {
       questionPageDisplayed: false,
       profilePageDisplayed: false,
       quizDisplayed: false,
+      renderSearch: false,
+      searchedResources:[],
       resources: [],
       categories: [],
       questions: [],
@@ -224,6 +226,23 @@ class App extends Component {
     })
   }
 
+  handleSearch = searchTerm => {
+    const token = localStorage.token
+    fetch(`http://localhost:3000/resources/${searchTerm}`,{
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then(resp => resp.json())
+      .then(data => this.setState({
+        renderSearch: true,
+        searchedResources: data
+      })
+    )
+  }
+
   saveUserResource = resource => {
     const token = localStorage.token;
     if(!this.state.currentUser.resources.find( saved => saved.id === resource.id)){
@@ -259,10 +278,6 @@ class App extends Component {
   }
 
   saveUserCategory = categoryIds => {
-    /*categoryIds = categoryIds.filter( (category_id, index ) => {
-      console.log("category_id", category_id, "index", index, "categoryIds", categoryIds)
-      return categoryIds.indexOf(category_id) === index
-    })*/
     const token = localStorage.token;
     fetch(`http://localhost:3000/api/v1/users/${this.state.currentUser.id}`, {
       method: "PATCH",
@@ -302,20 +317,20 @@ class App extends Component {
 
   currentRenderedPage = () => {
 
-    const { currentUser, signupDisplayed, loginDisplayed, resourceMainDisplayed, questionPageDisplayed, profilePageDisplayed, resources, categories, questions, answers } = this.state;
+    const { currentUser, signupDisplayed, loginDisplayed, resourceMainDisplayed, questionPageDisplayed, profilePageDisplayed, renderSearch, searchedResources, resources, categories, questions, answers } = this.state;
 
     if(signupDisplayed === true){
       return <Signup signup={this.signup} getLogin={this.getLogin}/>
     } else if(loginDisplayed === true ){
       return <Login login={this.login} getSignUp={this.getSignup}/>
     } else if(resourceMainDisplayed === true ){
-      return <div><Header currentUser={this.state.currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome}/>
-      <ResourceMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserResource={this.saveUserResource}/></div>
+      return <div><Header currentUser={this.state.currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome} handleSearch={this.handleSearch}/>
+      <ResourceMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserResource={this.saveUserResource} searchedResources={searchedResources} renderSearch={renderSearch}/></div>
     } else if(questionPageDisplayed === true ){
-      return <div><Header currentUser={this.state.currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome}/>
+      return <div><Header currentUser={this.state.currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome} handleSearch={this.handleSearch}/>
       <QuizOptionPage currentUser={currentUser} resources={resources} categories={categories}  getLogin={this.getLogin} saveUserCategory={this.saveUserCategory} questions={questions} answers={answers} getHome={this.getHome} /></div>
     } else if(profilePageDisplayed === true ){
-      return <div><Header currentUser={this.state.currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome}/>
+      return <div><Header currentUser={this.state.currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome} handleSearch={this.handleSearch}/>
       <ProfileMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserCategory={this.saveUserCategory}
       questions={questions}
       answers={answers} editUserProfile={this.editUserProfile} getHome={this.getHome} getProfile={this.getProfile} deleteUserResourceFromCard={this.deleteUserResourceFromCard}/></div>

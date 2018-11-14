@@ -33,24 +33,36 @@ class ProfileMainContainer extends Component {
 
   render(){
     return(
-      <div className="profile-main-container">
-        <div className="profile-display">
-          {this.state.showEditForm ?
-            <div><h1>Edit Profile</h1>
-            <ProfileEditForm currentUser={this.props.currentUser} categories={this.props.categories}
-            resources={this.props.resources}
-            questions={this.props.questions}
-            answers={this.props.answers}
-            saveUserCategory={this.props.saveUserCategory} editUserProfile={this.props.editUserProfile} getHome={this.props.getHome} hideEditForm={this.hideEditForm}/></div>
-            : <div><h1>My Profile</h1>
-            <ProfileDisplay currentUser={this.props.currentUser} categories={this.props.categories} handleEditFormClick={this.handleEditFormClick} /></div>
-          }
-        </div>
-        <div className="profile-list">
-          <h1>My Resources</h1>
-          <ProfileResourceList currentUser={this.props.currentUser} categories={this.props.categories}
-          resources={this.props.resources} deleteUserResourceFromCard={this.props.deleteUserResourceFromCard}
-          />
+      <div id="main" class="wrapper style4">
+  			<div class="container">
+    			<div class="row">
+            <div id="sidebar" className="8u skel-cell-important">
+              <section>
+                {this.state.showEditForm ?
+                  <div><header className="major"><h1>Edit Profile</h1></header>
+                  <ProfileEditForm currentUser={this.props.currentUser} categories={this.props.categories}
+                  resources={this.props.resources}
+                  questions={this.props.questions}
+                  answers={this.props.answers}
+                  saveUserCategory={this.props.saveUserCategory} editUserProfile={this.props.editUserProfile} getHome={this.props.getHome} hideEditForm={this.hideEditForm}/></div>
+                  : <div><header className="major"><h1>My Profile</h1></header>
+                  <ProfileDisplay currentUser={this.props.currentUser} categories={this.props.categories} handleEditFormClick={this.handleEditFormClick} /></div>
+                }
+              </section>
+            </div>
+            <div id="content" className="4u">
+              <section>
+                <header class="major"><h1>My Resources</h1></header><br/>
+                <ul><ProfileResourceList currentUser={this.props.currentUser} categories={this.props.categories}
+                resources={this.props.resources} deleteUserResourceFromCard={this.props.deleteUserResourceFromCard}
+                />
+                </ul>
+              </section>
+            </div>
+              <div className="wrapper style5">
+                Developed By: Chantal Wallace
+              </div>
+          </div>
         </div>
       </div>
     )

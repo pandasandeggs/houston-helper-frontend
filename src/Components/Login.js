@@ -24,7 +24,9 @@ class Login extends Component {
     const { username, password } = this.state;
 
     return (
-      <div className="bgimg w3-display-container w3-text-white">
+      <div class="wrapper style1">
+        <div id="banner">
+          <section class="container">
         <h1>Houston Helper</h1>
         <div className="form">
 
@@ -37,25 +39,27 @@ class Login extends Component {
               <label>
                 Username
               </label>
-              <input type="text" value={username} onChange={this.handleUsernameChange}/>
+              <input className="slinput" type="text" value={username} onChange={this.handleUsernameChange}/>
             </div>
 
             <div className="field-wrap">
               <label>
                 Password
               </label>
-              <input type="password" value={password} onChange={this.handlePasswordChange}/>
+              <input className="slinput" type="password" value={password} onChange={this.handlePasswordChange}/>
             </div>
 
-            <button className="button button-block">Log In</button>
+            <button className="button">Log In</button>
             </form>
             <br/><br/><br/>
-            <div>
-              <button onClick={ () => this.props.getSignUp() }>New Here? Signup.</button>
-            </div>
+
+            <button className="button" onClick={ () => this.props.getSignUp() }>New Here? Signup.</button>
+
             </div>
           </div>
         </div>
+        </section>
+      </div>
       </div>
     )
   }

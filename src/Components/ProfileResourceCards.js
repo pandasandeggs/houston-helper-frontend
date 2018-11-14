@@ -35,8 +35,8 @@ class ProfileResourceCards extends Component {
     return(
       <div key={this.props.resource.id}>
         <h3>{this.props.resource.name}</h3>
-        { this.state.documentWords ? <button className="document-show-button" id={this.props.resource.id} onClick={ e => this.getDocumentModal(e) }>Hide Documents</button> : <button className="document-show-button" id={this.props.resource.id} onClick={ e => this.getDocumentModal(e) }>Show Documents</button>}
-        <button className="document-delete-button" id={this.props.resource.id} onClick={ e => this.deleteUserResource(this.props.currentUser.id, e.target.id)}>Delete Resource</button>
+        { this.state.documentWords ? <button className="profile-button" id={this.props.resource.id} onClick={ e => this.getDocumentModal(e) }>Hide Documents</button> : <button className="profile-button" id={this.props.resource.id} onClick={ e => this.getDocumentModal(e) }>Show Documents</button>}
+        <button className="profile-button" id={this.props.resource.id} onClick={ e => this.deleteUserResource(this.props.currentUser.id, e.target.id)}>Delete Resource</button>
 
         { this.state.showModal ?
         <div>
