@@ -1,17 +1,144 @@
-.quiz-prompt {
-  text-align: center;
-  margin-bottom: 20em;
-  padding: 5em;
+#quiz {
+	background-color: #82b440;
 }
+	fieldset, legend {
+		color: black;
+	}
+
+/* Form */
+
+	#profile-edit input[type="text"],
+	#profile-edit input[type="password"],
+	#profile-edit input[type="email"],
+	#profile-edit textarea {
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		-o-appearance: none;
+		-ms-appearance: none;
+		appearance: none;
+		background: none;
+		border: solid 2px #82b440;
+		color: inherit;
+		display: block;
+		outline: 0;
+		padding: 0.75em;
+		text-decoration: none;
+		width: 55%;
+	}
+
+		input[type="text"]:focus,
+		input[type="password"]:focus,
+		input[type="email"]:focus,
+		textarea:focus {
+			border-color: #82b440;
+		}
+
+	input[type="text"],
+	input[type="password"],
+	input[type="email"] {
+		line-height: 1em;
+	}
+
+	::-webkit-input-placeholder {
+		color: inherit;
+		opacity: 0.5;
+		position: relative;
+		top: 3px;
+	}
+
+	:-moz-placeholder {
+		color: inherit;
+		opacity: 0.5;
+	}
+
+	::-moz-placeholder {
+		color: inherit;
+		opacity: 0.5;
+	}
+
+	:-ms-input-placeholder {
+		color: inherit;
+		opacity: 0.5;
+	}
+
+	.formerize-placeholder {
+		color: rgba(85, 85, 85, 0.5) !important;
+	}
+
+  #profile-edit fieldset {
+    appearance: none;
+		background: none;
+		border: solid 2px #82b440;
+		color: inherit;
+		display: block;
+		outline: 0;
+		padding: 0.75em;
+		text-decoration: none;
+		width: 55%;
+  }
+
+	/* Button */
 
 .quiz-button {
-  display: inline-block;
-  font-weight: bold;
-  font-size: 1em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	-o-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	background: none;
+	border-radius: none;
+	border: 2px solid;
+	border-color: #FFFFFF;
+	color: #FFFFFF;
+	cursor: pointer;
+	display: inline-block;
+	padding: 0.90em 1.2em;
+	letter-spacing: 1px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 1.4em;
+	-moz-transition: all 0.35s ease-in-out;
+	-webkit-transition: all 0.35s ease-in-out;
+	-o-transition: all 0.35s ease-in-out;
+	-ms-transition: all 0.35s ease-in-out;
+	transition: all 0.35s ease-in-out;
 }
 
-.resource-button {
-  display: inline-block;
-  font-weight: bold;
-  font-size: 1em;
-}
+	input[type="submit"]:hover,
+	input[type="reset"]:hover,
+	input[type="button"]:hover,
+	.quiz-button:hover {
+		background: #82b440;
+		color: white;
+	}
+
+	input[type="submit"].alt,
+	input[type="reset"].alt,
+	input[type="button"].alt,
+	.quiz-button.alt {
+		border-color: inherit;
+		color: inherit;
+	}
+
+		input[type="submit"].alt:hover,
+		input[type="reset"].alt:hover,
+		input[type="button"].alt:hover,
+		.quiz-button.alt:hover {
+			background: white;
+			color: #82b440;
+		}
+
+	input[type="submit"].fit,
+	input[type="reset"].fit,
+	input[type="button"].fit,
+	.quiz-button.fit {
+		width: 100%;
+	}
+
+	input[type="submit"].small,
+	input[type="reset"].small,
+	input[type="button"].small,
+	.quiz-button.small {
+		font-size: 0.8em;
+	}

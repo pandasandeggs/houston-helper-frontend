@@ -45,10 +45,10 @@ class Quiz extends Component {
 
   render(){
     return(
-      <div>
+      <div id="quiz" >
         <form onSubmit={ e => this.handleSubmit(e)}>
           <div>{this.getQuestions()}</div>
-          <button type="submit">Finished</button>
+          <button className="quiz-button" type="submit">Finished</button>
         </form>
       </div>
     )

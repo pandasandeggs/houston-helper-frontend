@@ -25,7 +25,7 @@ class ProfileDisplay extends Component {
           {this.getUserCategories()}
         </div>
         <div>
-          <button onClick={ () => this.props.handleEditFormClick()}>Edit Profile</button>
+          <button className="button" onClick={ () => this.props.handleEditFormClick()}>Edit Profile</button>
         </div>
       </div>
     )

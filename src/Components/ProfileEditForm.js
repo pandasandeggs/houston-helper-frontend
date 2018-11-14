@@ -28,14 +28,14 @@ class ProfileEditForm extends Component {
 
   handleQuestionClick = () => {
     this.setState({
-      renderQuiz: true
+      renderQuiz: !this.state.renderQuiz
     })
   }
 
   render(){
     const { username, email, password, password_confirmation } = this.state;
     return(
-      <div>
+      <div id="profile-edit">
         <form onSubmit={ e => this.handleSubmit(e)}>
           <div>
             <input type="text" value={username} name="Username" onChange={this.handleUsernameChange}/>
@@ -54,12 +54,12 @@ class ProfileEditForm extends Component {
           </div>
             <br/>
           <div>
-            <button type="submit">Save Profile</button>
+            <button className="button" type="submit">Save Profile</button>
           </div>
         </form>
         <br/>
         <div>
-          <button onClick={() => this.handleQuestionClick()}>Retake Questionnaire?</button>
+          <button className="button" onClick={() => this.handleQuestionClick()}>Retake Questionnaire?</button>
           { this.state.renderQuiz ? <Quiz categories={this.props.categories} getUserCategories={this.props.getUserCategories} resources={this.props.resources} questions={this.props.questions} answers={this.props.answers} saveUserCategory={this.props.saveUserCategory} getHome={this.props.getHome} />
           : null }
         </div>

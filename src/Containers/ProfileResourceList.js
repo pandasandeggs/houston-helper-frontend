@@ -6,13 +6,13 @@ class ProfileResourceList extends Component {
 
   getUserResources(){
     return this.props.currentUser.resources.map(resource =>
-      <div key={resource.id}>
+      <li key={resource.id}>
         <ProfileResourceCards
         currentUser={this.props.currentUser}
         resource={resource}
         deleteUserResourceFromCard={this.props.deleteUserResourceFromCard}
         />
-      </div>
+      </li>
     )
   }
 
