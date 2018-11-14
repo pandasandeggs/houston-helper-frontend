@@ -4,7 +4,7 @@ import ResourceCards from '../Components/ResourceCards'
 class ResourceList extends Component {
 
   getResources = () => { /* Fix the order of these... */
-    if(this.props.searchedResources.length){
+    if(this.props.searchedResource && this.props.searchedResources.length){
       return this.props.searchedResources.map( resource => {
         return <div key={resource.id} onClick={ e => this.props.handleResourceClick(resource)}>
           <ResourceCards id={resource.id} name={resource.name} categories={resource.categories}/>

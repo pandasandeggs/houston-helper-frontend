@@ -55,7 +55,10 @@ class App extends Component {
               'Authorization': `Bearer ${token}`
             }
           }).then(resp => resp.json())
-            .then(data => {this.setState({resources: data})
+            .then(data => {this.setState({
+              resources: data,
+              isLoading: false
+            })
           })
         }).then ( () => {
           const token = localStorage.token
