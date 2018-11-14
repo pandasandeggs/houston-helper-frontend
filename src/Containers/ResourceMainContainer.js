@@ -49,7 +49,7 @@ class ResourceMainContainer extends Component {
                 : null}
               </section>
             </div>
-              <div className="wrapper style5">
+              <div id="copyright">
                 Developed By: Chantal Wallace
               </div>
           </div>

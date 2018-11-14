@@ -59,7 +59,7 @@ class ProfileMainContainer extends Component {
                 </ul>
               </section>
             </div>
-              <div className="wrapper style5">
+              <div id="copyright">
                 Developed By: Chantal Wallace
               </div>
           </div>

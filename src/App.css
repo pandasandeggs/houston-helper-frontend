@@ -9,8 +9,12 @@
 
 /* Basic */
 
-	body {
-		background: #222222;
+	body, html {
+		background: #FFFFFF;
+		height: 100%;
+		background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 	}
 
 		body.loading * {
@@ -608,7 +612,7 @@ input[type="button"],
 		.wrapper.style5 {
 			background: #82b440;
 			text-align: center;
-			padding: 20px;
+			padding:130px;
 			color: white;
 			clear: both;
 		}
@@ -794,6 +798,7 @@ input[type="button"],
 			float: right;
 			width: 60%;
 			padding-bottom: 2em;
+			line-height: 1.2;
 		}
 
 		#main #sidebar section {
@@ -820,27 +825,32 @@ input[type="button"],
 	#footer {
 		padding: 6em 0 2em 0;
 		text-align: center;
-		color: white;
+		color: #82b440;
 	}
 
 		#footer hr {
 			border-bottom: 1px solid;
-			border-color: inherit;
+			border-color: #82b440;
 			opacity: .05;
 		}
 
 		#footer .major h2 {
-			color: inherit;
+			color: #82b440;
+			clear: both;
 		}
 
 		#footer .major .byline {
-			color: inherit;
+			color: #82b440;
 			opacity: .4;
+			padding-bottom: 10px;
+			margin-bottom: 0px;
 		}
 
 		#footer .copyright {
 			margin-top: 3em;
 			text-align: center;
+			padding-bottom: 10px;
+			clear:both;
 		}
 
 /* Copyright */
@@ -852,6 +862,8 @@ input[type="button"],
 		padding: 3em 0em 3em 0em;
 		color: inherit;
 		opacity: .40;
+		clear: both;
+		float: left;
 	}
 
 		#copyright a {

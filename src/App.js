@@ -8,7 +8,6 @@ import QuizOptionPage from "./Components/QuizOptionPage"
 import ResourceMainContainer from "./Containers/ResourceMainContainer"
 import ProfileMainContainer from "./Containers/ProfileMainContainer"
 
-// import { BrowserRouter, Route, Link, NavLink, Switch, Redirect } from "react-router-dom";
 
 class App extends Component {
 
