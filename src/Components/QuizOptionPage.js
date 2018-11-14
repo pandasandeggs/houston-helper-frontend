@@ -27,9 +27,9 @@ class QuizOptionPage extends Component {
           <h1>Hello {this.props.currentUser.username}!</h1>
           <h4>Welcome to Houston Helper! This app was created to help you and/or your loved ones find resources in your time of need. In order to better assist you with that search, we would like you to answer a few questions to help identify which resources may directly impact your life. You may fill out the form for yourself or on another persons behalf. If you skip the questions now, you will still have an opportunity to answer them later. Would you like to take the questionnaire? </h4>
 
-          <button className="quiz-button" onClick={this.handleQuizClick}>Answer questions!</button>
+          <button className="button" onClick={this.handleQuizClick}>Answer questions!</button>
           <br/>
-          <button className="resource-button" onClick={this.handleResourceClick}>View resources!</button>
+          <button className="button" onClick={this.handleResourceClick}>View resources!</button>
         </div>
         : null }
         { this.state.takeQuiz ?

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../App.css';
 import '../Stylesheets/SignupLogin.css';
 
 class Login extends Component {
@@ -24,40 +25,40 @@ class Login extends Component {
     const { username, password } = this.state;
 
     return (
-      <div class="wrapper style1">
+      <div className="wrapper style1">
         <div id="banner">
-          <section class="container">
+          <section className="container">
         <h1>Houston Helper</h1>
-        <div className="form">
+          <div id="form">
 
-        <div className="tab-content">
-          <div id="signuplogin">
-            <h1>Welcome Back!</h1>
+          <div className="tab-content">
+            <div id="signuplogin">
+              <h2>Welcome Back!</h2>
 
-            <form onSubmit={this.handleSubmit}>
-              <div className="field-wrap">
-              <label>
-                Username
-              </label>
-              <input className="slinput" type="text" value={username} onChange={this.handleUsernameChange}/>
-            </div>
+              <form onSubmit={this.handleSubmit}>
+                <div>
+                <label><h4>
+                  Username
+                </h4></label>
+                <input type="text" value={username} onChange={this.handleUsernameChange}/>
+              </div>
 
-            <div className="field-wrap">
-              <label>
-                Password
-              </label>
-              <input className="slinput" type="password" value={password} onChange={this.handlePasswordChange}/>
-            </div>
+              <div>
+                <label><h4>
+                  Password
+                </h4></label>
+                <input type="password" value={password} onChange={this.handlePasswordChange}/>
+              </div><br/><br/>
 
-            <button className="button">Log In</button>
-            </form>
-            <br/><br/><br/>
+              <button className="button">Log In</button>
+              </form>
+              <br/><br/><br/>
 
-            <button className="button" onClick={ () => this.props.getSignUp() }>New Here? Signup.</button>
+              <button className="button" onClick={ () => this.props.getSignUp() }>New Here? Signup.</button>
 
+              </div>
             </div>
           </div>
-        </div>
         </section>
       </div>
       </div>

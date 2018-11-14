@@ -1,17 +1,72 @@
-.quiz-prompt {
-  text-align: center;
-  margin-bottom: 20em;
-  padding: 5em;
-}
+/* Form */
 
-.quiz-button {
-  display: inline-block;
-  font-weight: bold;
-  font-size: 1em;
-}
+	#profile-edit input[type="text"],
+	#profile-edit input[type="password"],
+	#profile-edit input[type="email"],
+	#profile-edit textarea {
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		-o-appearance: none;
+		-ms-appearance: none;
+		appearance: none;
+		background: none;
+		border: solid 2px #82b440;
+		color: inherit;
+		display: block;
+		outline: 0;
+		padding: 0.75em;
+		text-decoration: none;
+		width: 55%;
+	}
 
-.resource-button {
-  display: inline-block;
-  font-weight: bold;
-  font-size: 1em;
-}
+		input[type="text"]:focus,
+		input[type="password"]:focus,
+		input[type="email"]:focus,
+		textarea:focus {
+			border-color: #82b440;
+		}
+
+	input[type="text"],
+	input[type="password"],
+	input[type="email"] {
+		line-height: 1em;
+	}
+
+	::-webkit-input-placeholder {
+		color: inherit;
+		opacity: 0.5;
+		position: relative;
+		top: 3px;
+	}
+
+	:-moz-placeholder {
+		color: inherit;
+		opacity: 0.5;
+	}
+
+	::-moz-placeholder {
+		color: inherit;
+		opacity: 0.5;
+	}
+
+	:-ms-input-placeholder {
+		color: inherit;
+		opacity: 0.5;
+	}
+
+	.formerize-placeholder {
+		color: rgba(85, 85, 85, 0.5) !important;
+	}
+
+  #profile-edit fieldset {
+    appearance: none;
+		background: none;
+		border: solid 2px #82b440;
+		color: inherit;
+		display: block;
+		outline: 0;
+		padding: 0.75em;
+		text-decoration: none;
+		width: 55%;
+
+  }
