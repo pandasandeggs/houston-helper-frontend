@@ -9,6 +9,10 @@
 		color: black;
 	}
 
+	header, h1 {
+		line-height: 1.2em;
+	}
+
 /* Form */
 
 	#profile-edit input[type="text"],
