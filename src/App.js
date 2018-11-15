@@ -239,9 +239,9 @@ class App extends Component {
     })
       .then(resp => resp.json())
       .then(data => this.setState({
-        renderSearch: true,
-        searchedResources: data
-      })
+        searchedResources: data,
+        renderSearch: true
+      },() => console.log("data", data, "state", this.state))
     )
   }
 
@@ -336,6 +336,9 @@ class App extends Component {
       <ProfileMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserCategory={this.saveUserCategory}
       questions={questions}
       answers={answers} editUserProfile={this.editUserProfile} getHome={this.getHome} getProfile={this.getProfile} deleteUserResourceFromCard={this.deleteUserResourceFromCard}/></div>
+    } else if(renderSearch === true ){
+      return <div><Header currentUser={this.state.currentUser} logout={this.logout} getProfile={this.getProfile} getHome={this.getHome} handleSearch={this.handleSearch}/>
+      <ResourceMainContainer currentUser={currentUser} resources={resources} categories={categories} saveUserResource={this.saveUserResource} searchedResources={searchedResources} renderSearch={renderSearch}/></div>
     }
 
   }

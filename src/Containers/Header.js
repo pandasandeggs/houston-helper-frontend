@@ -40,8 +40,8 @@ class Header extends Component {
                     <li onClick={ () => this.props.getProfile()}><a>My Profile</a></li>
                     <li onClick={ () => this.logout()}><a>Logout</a></li>
                     <li>
-                      <form className="form" onSubmit={this.handleSubmit}>
-                      <input className="input" onChange={this.handleSearchChange} type="search" placeholder="Search by resource name"/>
+                      <form className="form" onSubmit={e => this.handleSubmit(e)}>
+                      <input className="input" onChange={e => this.handleSearchChange(e)} type="search" placeholder="Search by resource name"/>
                       <i className="fa fa-search"></i>
                       </form>
                     </li>

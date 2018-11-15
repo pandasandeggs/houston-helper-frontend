@@ -3,8 +3,8 @@ import ResourceCards from '../Components/ResourceCards'
 
 class ResourceList extends Component {
 
-  getResources = () => { /* Fix the order of these... */
-    if(this.props.searchedResource && this.props.searchedResources.length){
+  getResources = () => {
+    if(this.props.searchedResources.length > 0){
       return this.props.searchedResources.map( resource => {
         return <div key={resource.id} onClick={ e => this.props.handleResourceClick(resource)}>
           <ResourceCards id={resource.id} name={resource.name} categories={resource.categories}/>
@@ -26,7 +26,6 @@ class ResourceList extends Component {
   }
 
   render(){
-    console.log("Inside Render", this.props.currentUser)
     return(
       <ul className="default">
         {this.getResources()}

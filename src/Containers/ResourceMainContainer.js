@@ -17,9 +17,9 @@ class ResourceMainContainer extends Component {
 
   render(){
     return(
-      <div id="main" class="wrapper style4">
-        <div class="container">
-    			<div class="row">
+      <div id="main" className="wrapper style4">
+        <div className="container">
+    			<div className="row">
             <div id="sidebar" className="4u">
               <section>
                 <header className="major"><h1>Resources</h1></header>
@@ -35,13 +35,7 @@ class ResourceMainContainer extends Component {
                 { this.state.chosenResource ?
                   <ResourceDisplay
                   handleResourceClick={this.handleResourceClick}
-                  id={this.state.chosenResource.id}
-                  name={this.state.chosenResource.name}
-                  image={this.state.chosenResource.image}
-                  description={this.state.chosenResource.description}
-                  phone={this.state.chosenResource.phone}
-                  email={this.state.chosenResource.email}
-                  website={this.state.chosenResource.website}
+                  {...this.state.chosenResource}
                   currentUser={this.props.currentUser}
                   saveUserResource={this.props.saveUserResource}
                   saveButtonText={ this.props.currentUser.resources.find( resource => resource.id === this.state.chosenResource.id ) ? 'Saved' : 'Save Resource'}
