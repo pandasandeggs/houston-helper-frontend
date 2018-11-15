@@ -45,7 +45,8 @@ class Quiz extends Component {
 
   render(){
     return(
-      <div id="quiz" >
+      <div id="quiz">
+        <header><h1>Houston Helper Questionnaire</h1></header>
         <form onSubmit={ e => this.handleSubmit(e)}>
           <div>{this.getQuestions()}</div>
           <button className="quiz-button" type="submit">Finished</button>

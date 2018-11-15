@@ -3,6 +3,7 @@
 #quiz {
 	background-color: #82b440;
 	width: 65%;
+	margin:auto;
 }
 	fieldset, legend {
 		color: black;
@@ -106,6 +107,7 @@
 	-o-transition: all 0.35s ease-in-out;
 	-ms-transition: all 0.35s ease-in-out;
 	transition: all 0.35s ease-in-out;
+	margin-top: 2em;
 }
 
 	input[type="submit"]:hover,
@@ -144,4 +146,8 @@
 	input[type="button"].small,
 	.quiz-button.small {
 		font-size: 0.8em;
+	}
+
+	#switch.quiz-button{
+		margin-bottom: 200px;
 	}
