@@ -33,9 +33,9 @@ class ProfileMainContainer extends Component {
 
   render(){
     return(
-      <div id="main" class="wrapper style4">
-  			<div class="container">
-    			<div class="row">
+      <div id="main" className="wrapper style4">
+  			<div className="container">
+    			<div className="row">
             <div id="sidebar" className="8u skel-cell-important">
               <section>
                 {this.state.showEditForm ?

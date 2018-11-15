@@ -54,7 +54,7 @@ class Login extends Component {
               </form>
               <br/><br/><br/>
 
-              <button className="button" onClick={ () => this.props.getSignUp() }>New Here? Signup.</button>
+              <button id="switch" className="button" onClick={ () => this.props.getSignUp() }>New Here? Signup.</button>
 
               </div>
             </div>

@@ -41,7 +41,7 @@ class Header extends Component {
                     <li onClick={ () => this.logout()}><a>Logout</a></li>
                     <li>
                       <form className="form" onSubmit={e => this.handleSubmit(e)}>
-                      <input className="input" onChange={e => this.handleSearchChange(e)} type="search" placeholder="Search by resource name"/>
+                      <input className="input" onChange={e => this.handleSearchChange(e)} type="search" placeholder="Search by Capitalized resource name"/>
                       <i className="fa fa-search"></i>
                       </form>
                     </li>

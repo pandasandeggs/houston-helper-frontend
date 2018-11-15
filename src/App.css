@@ -473,6 +473,10 @@
 			font-size: 0.8em;
 		}
 
+			#switch.button {
+				margin-bottom: 100px;
+			}
+
 
 /* Wrapper */
 
